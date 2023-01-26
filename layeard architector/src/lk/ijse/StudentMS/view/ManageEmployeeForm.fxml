@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="690.0" prefWidth="1108.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.StudentMS.controller.ManageEmployeeFormController">
+   <children>
+      <TableView fx:id="table" layoutX="604.0" layoutY="261.0" prefHeight="400.0" prefWidth="590.0">
+         <columns>
+            <TableColumn fx:id="EID" maxWidth="100.0" prefWidth="45.0" text="EID" />
+            <TableColumn fx:id="NIC" maxWidth="100.0" prefWidth="46.0" text="NIC" />
+            <TableColumn fx:id="Name" maxWidth="100.0" prefWidth="61.0" text="Name" />
+            <TableColumn fx:id="Address" maxWidth="117.0" prefWidth="66.0" text="Address" />
+            <TableColumn fx:id="Email" maxWidth="133.0" prefWidth="64.0" text="Email" />
+            <TableColumn fx:id="CNumber" maxWidth="161.0" prefWidth="73.0" text="Contact No" />
+            <TableColumn fx:id="Salary" maxWidth="158.0" prefWidth="60.0" text="Salary" />
+            <TableColumn fx:id="cashOrCard" maxWidth="178.0" prefWidth="83.0" text="Cash/Card" />
+            <TableColumn fx:id="Role" maxWidth="100.0" prefWidth="308.0" text="Role" />
+         </columns>
+      </TableView>
+      <JFXTextField fx:id="Search" layoutX="604.0" layoutY="193.0" onAction="#searchOnAction" prefHeight="50.0" prefWidth="180.0" promptText="Search Name Or EID" style="-fx-background-color: white; -fx-background-radius: 30;" />
+      <JFXButton layoutX="785.0" layoutY="193.0" onAction="#btnSearchEmployee" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #2196F3; -fx-background-radius: 30;" text="Search" />
+      <Pane fx:id="pane3333" layoutX="-13.0" layoutY="-21.0" opacity="0.54" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: #95a5a6; -fx-background-radius: 50; -fx-border-radius: 30px; -fx-background-insets: 50; -fx-opacity: 30; -fx-max-height: 600; -fx-max-width: 700;">
+         <children>
+            <Text layoutX="83.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID :" />
+            <JFXTextField fx:id="txtId" layoutX="167.0" layoutY="155.0" prefHeight="25.0" prefWidth="113.0" promptText="Employee ID" />
+            <Text layoutX="363.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIC:" />
+            <JFXTextField fx:id="txtNIC" layoutX="393.0" layoutY="162.0" promptText="NIC" />
+            <Text layoutX="83.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
+            <JFXTextField fx:id="txtName" layoutX="132.0" layoutY="186.0" prefHeight="25.0" prefWidth="150.0" promptText="Name" />
+            <Text layoutX="364.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" />
+            <JFXTextField fx:id="txtAddress" layoutX="429.0" layoutY="191.0" prefHeight="25.0" prefWidth="100.0" promptText="Address" />
+            <Text layoutX="85.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
+            <JFXTextField fx:id="txtEmail" layoutX="132.0" layoutY="216.0" prefHeight="25.0" prefWidth="150.0" promptText="Email" />
+            <Text layoutX="364.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No:" />
+            <JFXTextField fx:id="txtContact" layoutX="429.0" layoutY="223.0" prefHeight="25.0" prefWidth="100.0" promptText="Contact No" />
+            <Text layoutX="83.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary:" />
+            <JFXTextField fx:id="txtSalary" layoutX="132.0" layoutY="249.0" prefHeight="25.0" prefWidth="150.0" promptText="Salary" />
+            <Text layoutX="363.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cash/Card:" />
+            <JFXTextField fx:id="txtCashOrCard" layoutX="429.0" layoutY="256.0" prefHeight="25.0" prefWidth="100.0" promptText="Cash/Card" />
+            <Text layoutX="91.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select your Role:" />
+            <JFXRadioButton fx:id="RadioButtonTeacher" layoutX="88.0" layoutY="336.0" onAction="#radioButtonOnActionTeacher" text="Teacher">
+               <toggleGroup>
+                  <ToggleGroup fx:id="jobRole" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="RadioButtonManager" layoutX="174.0" layoutY="336.0" onAction="#radioButtonOnActionManager" text="Manager" toggleGroup="$jobRole" />
+            <JFXRadioButton fx:id="RadioButtonOther" layoutX="263.0" layoutY="336.0" onAction="#radioButtonOnActionOther" text="Other" toggleGroup="$jobRole" />
+            <JFXTextField fx:id="txtUserName" layoutX="128.0" layoutY="373.0" promptText="User Name" />
+            <JFXTextField fx:id="txtPassword" layoutX="274.0" layoutY="373.0" promptText="Password" />
+            <Text fill="#222020" layoutX="254.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Text>
+            <JFXButton layoutX="184.0" layoutY="436.0" onAction="#btnAddEmployee" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #2196F3; -fx-background-radius: 30;" text="Add " />
+            <JFXButton layoutX="292.0" layoutY="436.0" onAction="#btnUpdateEmployee" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #43A047; -fx-background-radius: 30;" text="Update " />
+            <JFXButton layoutX="398.0" layoutY="436.0" onAction="#btnDeleteEmployee" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #F44336; -fx-background-radius: 30;" text="Delete" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
