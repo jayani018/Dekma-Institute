@@ -1,5 +1,6 @@
 package lk.ijse.StudentMS.dao.custom.impl;
 
+import lk.ijse.StudentMS.dao.SqlUtil;
 import lk.ijse.StudentMS.dao.custom.TeacherModelDAO;
 import lk.ijse.StudentMS.model.TeacherDTO;
 
@@ -11,12 +12,13 @@ public class TeacherModelDAOImpl implements TeacherModelDAO {
 
     @Override
     public ArrayList<TeacherDTO> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        
     }
 
     @Override
-    public boolean add(TeacherDTO entity) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean add(TeacherDTO dto) throws SQLException, ClassNotFoundException {
+
+
     }
 
     @Override
