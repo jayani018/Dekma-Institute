@@ -13,10 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.StudentMS.dao.EmployeeModelDAOImpl;
-import lk.ijse.StudentMS.dao.StudentModelDAOImpl;
-import lk.ijse.StudentMS.model.EmployeeDTO;
-import lk.ijse.StudentMS.model.StudentDTO;
+
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -115,144 +112,33 @@ public class ManageStudentsFormController {
 
 
     private void LoadTableData() {
-        ObservableList<StudentDTO> StudentList = FXCollections.observableArrayList();
-        try {
-            ArrayList<StudentDTO> StudentData = StudentModelDAOImpl.loadStudent();
-            for (StudentDTO student : StudentData) {
-                StudentList.add(student);
-            }
-        } catch (SQLException | ClassNotFoundException x) {
-            x.printStackTrace();
-        }
-        Student.setItems(StudentList);
+
     }
 
 
     public void btnUpdateStudent(ActionEvent actionEvent) {
-
-
-        StudentDTO student = new StudentDTO(combEmployeeId.getValue(), txtID.getText(), txtName.getText(), txtEmail.getText(),
-                txtEY.getText(), txtNIC.getText(), txtAdress.getText(), txtCNo.getText(), txtStream.getText());
-
-
-        try {
-            boolean updateStudent = StudentModelDAOImpl.updateStudent(student);
-            if (updateStudent) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Update is successful");
-                alert.show();
-                LoadTableData();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "error");
-                alert.show();
-            }
-
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-        }
     }
 
-
     private void cmbLoadData() throws SQLException, ClassNotFoundException {
-        ArrayList<EmployeeDTO> arrayList = EmployeeModelDAOImpl.loadEmployee();
-        ObservableList obList = FXCollections.observableArrayList();
-        for (EmployeeDTO emp : arrayList) {
-            obList.add(emp.getEID());
-        }
-        combEmployeeId.setItems(obList);
+
     }
 
 
     public void btnSearch(ActionEvent actionEvent) {
-        String search = Search.getText();
-        StudentDTO student = new StudentDTO();
-        student.setSID(search);
-        try {
-            boolean searchStudent = StudentModelDAOImpl.searchStudent(student);
-            if (searchStudent) {
-                combEmployeeId.setValue(student.getEID());
-                txtID.setText(search);
-                txtNIC.setText(student.getNIC());
-                txtStream.setText(student.getStream());
-                txtEY.setText(student.getExam_year());
-                txtName.setText(student.getName());
-                txtAdress.setText(student.getAddress());
-                txtCNo.setText(student.getContact());
-                txtEmail.setText(student.getContact());
-                Search.setText("");
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "error");
-                alert.show();
-            }
 
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-
-    public void searchOnAction(ActionEvent actionEvent) {
-    }
-
-    public void clear() {
-        txtID.clear();
-        txtNIC.clear();
-        txtStream.clear();
-        txtEY.clear();
-        txtName.clear();
-        txtAdress.clear();
-        txtCNo.clear();
-        txtEmail.clear();
     }
 
     public void btnAddStudent() {
 
-        StudentDTO student = new StudentDTO(combEmployeeId.getValue(), txtID.getText(), txtName.getText(), txtEmail.getText(),
-                txtEY.getText(), txtNIC.getText(), txtAdress.getText(), txtCNo.getText(), txtStream.getText());
-
-        try {
-            boolean isAdded = StudentModelDAOImpl.addStudent(student);
-
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Student Added!").show();
-                LoadTableData();
-                clear();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Something happened!").show();
-            }
-        } catch (SQLException | ClassNotFoundException x) {
-            x.printStackTrace();
-        }
     }
 
     public void btnDeleteStudent(ActionEvent actionEvent) {
-        StudentDTO student = new StudentDTO(combEmployeeId.getValue(), txtID.getText(), txtName.getText(), txtEmail.getText(),
-                txtEY.getText(), txtNIC.getText(), txtAdress.getText(), txtCNo.getText(), txtStream.getText());
 
-        try {
-            boolean isDeleted = StudentModelDAOImpl.deleteStudent(student);
-            if (isDeleted){
-                new Alert(Alert.AlertType.CONFIRMATION, "Student Deleted Successfully!").show();
-                LoadTableData();
-            }else {
-                new Alert(Alert.AlertType.WARNING, "Student not Deleted!").show();
-            }
-        } catch (SQLException | ClassNotFoundException x) {
-            x.printStackTrace();
-        }
     }
 
 
     public void stuOnKeyReleased(KeyEvent keyEvent) {
-        validate();
 
-        if (keyEvent.getCode() == KeyCode.ENTER) {
-            Object responds = validate();
 
-            if (responds instanceof TextField) {
-                TextField textField = (TextField) responds;
-                textField.requestFocus();
-            } else {
-                btnAddStudent();
-            }
-        }
     }
 }
