@@ -1,4 +1,4 @@
-package lk.ijse.StudentMS.dao;
+package lk.ijse.StudentMS.dao.custom.impl;
 
 import lk.ijse.StudentMS.db.DBConnection;
 import lk.ijse.StudentMS.model.BatchDTO;
