@@ -2,7 +2,6 @@ package lk.ijse.StudentMS.dao;
 
 import lk.ijse.StudentMS.db.DBConnection;
 import lk.ijse.StudentMS.model.StudentDTO;
-import lk.ijse.StudentMS.util.CrudUtil;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -15,7 +14,7 @@ public class StudentModelDAOImpl {
     public static boolean addStudent (StudentDTO student) throws SQLException, ClassNotFoundException {
 
         String sql="INSERT INTO Student VALUES (?,?,?,?,?,?,?,?,?)";
-        return CrudUtil.execute(sql,student.getSID(),student.getEID(),student.getNIC(),
+        return SqlUtil.execute(sql,student.getSID(),student.getEID(),student.getNIC(),
                 student.getStream(),student.getExam_year(),student.getName(),student.getAddress(),student.getContact(),student.getEmail());
 
 
@@ -26,7 +25,7 @@ public class StudentModelDAOImpl {
 
 
         String sql = "UPDATE Student SET EId=?, NIC=?, subject=?,exam_year=?,name=?,address=?,contact=?,email=? WHERE SID=?";
-        return CrudUtil.execute(sql,student.getEID(),student.getNIC(),
+        return SqlUtil.execute(sql,student.getEID(),student.getNIC(),
                 student.getStream(),student.getExam_year(),student.getName(),student.getAddress(),student.getContact(),student.getEmail(),student.getSID());
     }
 

@@ -2,7 +2,6 @@ package lk.ijse.StudentMS.dao;
 
 import lk.ijse.StudentMS.db.DBConnection;
 import lk.ijse.StudentMS.model.TeacherDTO;
-import lk.ijse.StudentMS.util.CrudUtil;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -33,7 +32,7 @@ public class TeacherModelDAOImpl {
 
     public static boolean updateTeacher(TeacherDTO teacher) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE Teacher SET  SubID=?,NIC=?,name=?,address=?,contact=?,email=?, salary=?  WHERE TId=?";
-        return CrudUtil.execute(sql,teacher.getSUBID(),teacher.getNIC(),
+        return SqlUtil.execute(sql,teacher.getSUBID(),teacher.getNIC(),
                 teacher.getName(),teacher.getAddress(),teacher.getContact(),teacher.getEmail(),teacher.getSalary(),teacher.getTID());
 
     }
