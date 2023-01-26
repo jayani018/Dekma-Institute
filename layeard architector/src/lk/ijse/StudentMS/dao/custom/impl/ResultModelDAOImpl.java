@@ -1,26 +1,44 @@
 package lk.ijse.StudentMS.dao.custom.impl;
 
-import lk.ijse.StudentMS.db.DBConnection;
-import lk.ijse.StudentMS.model.SubjectDTO;
+import lk.ijse.StudentMS.dao.custom.ResultModelDAO;
+import lk.ijse.StudentMS.model.ResultDTO;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class ResultModelDAOImpl {
-        public static boolean addSubject(SubjectDTO subject) throws ClassNotFoundException, SQLException {
-
-            PreparedStatement preparedStatement = DBConnection.getdBConnection().getConnection().prepareStatement("INSERT INTO Subject VALUES (?,?)");
-
-            preparedStatement.setObject(1, subject.getSUBID());
-            preparedStatement.setObject(2, subject.getSubName());
-
-
-            int executeUpdate = preparedStatement.executeUpdate();
-            if (executeUpdate > 0) {
-                return true;
-            }
-            return false;
-        }
-
-
+public class ResultModelDAOImpl implements ResultModelDAO {
+    @Override
+    public ArrayList<ResultDTO> getAll() throws SQLException, ClassNotFoundException {
+        return null;
     }
+
+    @Override
+    public boolean add(ResultDTO entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean update(ResultDTO entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public String generateNewID() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public ResultDTO search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+}
