@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class BatchModelDAOImpl {
+public class BatchModelDAOImpl{
     public static boolean addBatch(BatchDTO batch) throws SQLException, ClassNotFoundException {
         PreparedStatement preparedStatement = DBConnection.getdBConnection().getConnection().prepareStatement("INSERT INTO Batch VALUES (?,?,?)");
         preparedStatement.setObject(1, batch.getBID());

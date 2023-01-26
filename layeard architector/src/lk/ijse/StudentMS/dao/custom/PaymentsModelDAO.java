@@ -1,4 +1,7 @@
 package lk.ijse.StudentMS.dao.custom;
 
-public interface PaymentsModelDAO {
+import lk.ijse.StudentMS.dao.CrudDAO;
+import lk.ijse.StudentMS.model.PaymentsDTO;
+
+public interface PaymentsModelDAO extends CrudDAO<PaymentsDTO> {
 }

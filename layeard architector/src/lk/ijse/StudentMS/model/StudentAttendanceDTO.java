@@ -1,14 +1,14 @@
 package lk.ijse.StudentMS.model;
 
-public class StudentAttendance {
+public class StudentAttendanceDTO {
     private String SID;
     private String date;
     private String time;
 
-    public StudentAttendance() {
+    public StudentAttendanceDTO() {
     }
 
-    public StudentAttendance(String SID, String date, String time) {
+    public StudentAttendanceDTO(String SID, String date, String time) {
         this.SID = SID;
         this.date = date;
         this.time = time;

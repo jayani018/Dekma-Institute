@@ -1,4 +1,7 @@
 package lk.ijse.StudentMS.dao.custom;
 
-public interface EmployeeModelDAO {
+import lk.ijse.StudentMS.dao.CrudDAO;
+import lk.ijse.StudentMS.model.EmployeeDTO;
+
+public interface EmployeeModelDAO extends CrudDAO<EmployeeDTO> {
 }
