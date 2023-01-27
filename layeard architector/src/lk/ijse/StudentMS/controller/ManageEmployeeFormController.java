@@ -2,19 +2,18 @@ package lk.ijse.StudentMS.controller;
 
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.dao.custom.EmployeeModelDAO;
+import lk.ijse.StudentMS.dao.custom.impl.EmployeeModelDAOImpl;
+import lk.ijse.StudentMS.model.EmployeeDTO;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class ManageEmployeeFormController {
     public AnchorPane pane;
@@ -46,17 +45,34 @@ public class ManageEmployeeFormController {
     private String role;
 
 
-
     public void btnAddEmployee(ActionEvent actionEvent) throws IOException {
 
     }
 
-   public void btnUpdateEmployee(ActionEvent actionEvent) {
-
-   }
+    public void btnUpdateEmployee(ActionEvent actionEvent) {
+        EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
+        try {
+            boolean update = employeeModelDAO.update(
+                    new EmployeeDTO(txtNIC.getText(),
+                            txtName.getText(),
+                            txtAddress.getText(),
+                            txtContact.getText(),
+                            txtEmail.getText(),
+                            txtSalary.getText(),
+                            txtId.getText()
+                    ));
+           // System.out.println(update);
+            if (update) {
+                new Alert(Alert.AlertType.INFORMATION, "Update Employee").show();
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
     public void btnDeleteEmployee(ActionEvent actionEvent) {
     }
+
     public void radioButtonOnActionTeacher(ActionEvent actionEvent) {
 
     }
@@ -71,25 +87,48 @@ public class ManageEmployeeFormController {
 
     }
 
-        public void initialize () {
+    public void initialize() {
 
 
-        }
+    }
 
     public void btnSearchEmployee(ActionEvent actionEvent) {
     }
-    public void searchOnAction(ActionEvent actionEvent) {
-    }
 
 
-
-
-    private void tableInit(){
+    private void tableInit() {
 
     }
-    public void initial(){
+
+    public void initial() {
         tableInit();
     }
 
+    public void searchOnActions(ActionEvent actionEvent) {
+
+    }
+
+    public void btnSearchEmployees(ActionEvent actionEvent) {
+        EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
+        try {
+            EmployeeDTO search = employeeModelDAO.search(Search.getText());
+            if (search==null){
+                new Alert(Alert.AlertType.INFORMATION,"Not Employee").show();
+            }else {
+                txtId.setText(search.getEID());
+                txtName.setText(search.getName());
+                txtAddress.setText(search.getAddress());
+                txtContact.setText(search.getContact());
+                txtEmail.setText(search.getEmail());
+                txtNIC.setText(search.getNIC());
+                txtSalary.setText(String.valueOf(search.getSalary()));
+            }
+
+
+
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }
 
