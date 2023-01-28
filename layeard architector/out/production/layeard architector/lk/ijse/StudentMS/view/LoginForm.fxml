@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="793.0" fitWidth="716.0" layoutX="-4.0" layoutY="-22.0" pickOnBounds="true">
          <image>
-            <Image url="@assets/image/414380-PETBXW-837.jpg" />
+            <Image url="@assets/image/background.jpg" />
          </image>
       </ImageView>
       <Pane fx:id="pane3333" layoutX="739.0" layoutY="45.0" opacity="0.54" prefHeight="600.0" prefWidth="672.0" style="-fx-background-color: #95a5a6; -fx-background-radius: 50; -fx-border-radius: 30px; -fx-background-insets: 50; -fx-opacity: 30; -fx-max-height: 600; -fx-max-width: 500;">
