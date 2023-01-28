@@ -1,6 +1,7 @@
 package lk.ijse.StudentMS.model;
 
 public class ResultDTO {
+    private  String TID;
     private String SID;
     private String SUBID;
     private String result;
@@ -8,10 +9,19 @@ public class ResultDTO {
     public ResultDTO() {
     }
 
-    public ResultDTO(String SID, String SUBID, String result) {
+    public ResultDTO(String TID ,String SID, String SUBID, String result) {
+        this.TID = TID;
         this.SID = SID;
         this.SUBID = SUBID;
         this.result = result;
+    }
+
+    public String getTID() {
+        return TID;
+    }
+
+    public void setTID(String TID) {
+        this.TID = TID;
     }
 
     public String getSID() {
