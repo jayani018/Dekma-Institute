@@ -22,8 +22,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <JFXTextField fx:id="Search" layoutX="612.0" layoutY="183.0" onAction="#searchOnaction" prefHeight="50.0" prefWidth="183.0" promptText="Search Batch" style="-fx-background-color: #FAFAFA; -fx-background-radius: 30;" />
-      <JFXButton layoutX="794.0" layoutY="183.0" onAction="#btnSearch" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #2196F3; -fx-background-radius: 30;" text="Seaarch" />
       <Pane fx:id="pane3333" layoutX="-23.0" layoutY="-9.0" opacity="0.54" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: #95a5a6; -fx-background-radius: 50; -fx-border-radius: 30px; -fx-background-insets: 50; -fx-opacity: 30; -fx-max-height: 600; -fx-max-width: 700;">
          <children>
             <Text fill="#1b1a1a" layoutX="203.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Attendance">
