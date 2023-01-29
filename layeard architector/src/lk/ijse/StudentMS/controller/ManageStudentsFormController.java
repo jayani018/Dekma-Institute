@@ -2,21 +2,15 @@ package lk.ijse.StudentMS.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
-
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
@@ -140,5 +134,8 @@ public class ManageStudentsFormController {
     public void stuOnKeyReleased(KeyEvent keyEvent) {
 
 
+    }
+
+    public void searchOnAction(ActionEvent actionEvent) {
     }
 }

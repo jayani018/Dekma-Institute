@@ -4,7 +4,7 @@ public class StudentDTO {
     private String SID;
     private String EID;
     private String NIC;
-    private String stream;
+    private String subject;
     private String exam_year;
     private String name;
     private String address;
@@ -15,11 +15,11 @@ public class StudentDTO {
     }
 
 
-    public StudentDTO(String EID, String SID, String NIC, String stream, String exam_year, String name, String address, String contact, String email) {
+    public StudentDTO(String EID, String SID, String NIC, String subject, String exam_year, String name, String address, String contact, String email) {
         this.SID = SID;
         this.EID = EID;
         this.NIC = NIC;
-        this.stream = stream;
+        this.subject = subject;
         this.exam_year = exam_year;
         this.name = name;
         this.address = address;
@@ -51,12 +51,12 @@ public class StudentDTO {
         this.NIC = NIC;
     }
 
-    public String getStream() {
-        return stream;
+    public String getsubject() {
+        return subject;
     }
 
-    public void setStream(String stream) {
-        this.stream = stream;
+    public void setsubject(String subject) {
+        this.subject = subject;
     }
 
     public String getExam_year() {

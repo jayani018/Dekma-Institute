@@ -1,8 +1,10 @@
 package lk.ijse.StudentMS.dao.custom.impl;
 
+import lk.ijse.StudentMS.dao.SqlUtil;
 import lk.ijse.StudentMS.dao.custom.StudentModelDAO;
 import lk.ijse.StudentMS.model.StudentDTO;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -10,17 +12,23 @@ public class StudentModelDAOImpl implements StudentModelDAO {
 
     @Override
     public ArrayList<StudentDTO> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<StudentDTO> Student = new ArrayList<>();
+        ResultSet rst = SqlUtil.execute("SELECT * FROM Student");
+        while (rst.next()){
+            StudentDTO studentDTO = new StudentDTO(rst.getString("SID"), rst.getString("EID"), rst.getString("NIC"), rst.getString("stream"), rst.getString("exam_year"), rst.getString("name"), rst.getString("address"), rst.getString("contact"), rst.getString("email"));
+            Student.add(studentDTO);
+        }
+        return Student;
     }
 
     @Override
-    public boolean add(StudentDTO entity) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean add(StudentDTO dto) throws SQLException, ClassNotFoundException {
+         return SqlUtil.execute("INSERT INTO Student VALUES (?,?,?,?,?,?,?,?,?)", dto.getSID(), dto.getEID(), dto.getNIC(), dto.getsubject(), dto.getExam_year(), dto.getName(), dto.getAddress(), dto.getContact(), dto.getEmail());
     }
 
     @Override
-    public boolean update(StudentDTO entity) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean update(StudentDTO dto) throws SQLException, ClassNotFoundException {
+        return SqlUtil.execute( "UPDATE Student SET EId=?, NIC=?, subject=?,exam_year=?,name=?,address=?,contact=?,email=? WHERE SID=?",dto.getEID(),dto.getNIC(),dto.getsubject(),dto.getExam_year(),dto.getName(),dto.getAddress(),dto.getEmail(),dto.getSID());
     }
 
     @Override
@@ -35,11 +43,16 @@ public class StudentModelDAOImpl implements StudentModelDAO {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return false;
+       return SqlUtil.execute("DELETE FROM Student  WHERE SID=?",id);
     }
 
     @Override
     public StudentDTO search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SqlUtil.execute("SELECT * FROM Student WHERE SID=?", id);
+        StudentDTO studentDTO = null;
+        if (rst.next()){
+            new StudentDTO(id,rst.getString("EID"),rst.getString("NIC"),rst.getString("subject"),rst.getString("exam_year"),rst.getString("name"),rst.getString("address"),rst.getString("contact"),rst.getString("email"));
+        }
+        return studentDTO;
     }
 }

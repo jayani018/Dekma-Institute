@@ -50,7 +50,7 @@ public class AdminFormController {
 
     @FXML
     void btnMStudent(ActionEvent event) throws IOException {
-        Parent parent = load(getClass().getResource("/lk/ijse/StudentMS/view/ManageStudentsForm.fxml"));
+        Parent parent = load(getClass().getResource("/lk/ijse/StudentMS/view/ManageStudentsForm.fxml/"));
         pane.getChildren().clear();
         pane.getChildren().add(parent);
     }
