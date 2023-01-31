@@ -44,13 +44,32 @@ public class ManageEmployeeFormController {
     public JFXTextField txtPassword;
     private String role;
 
+    EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
 
     public void btnAddEmployee(ActionEvent actionEvent) throws IOException {
+      //  EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
+        try {
+            boolean add = employeeModelDAO.add(
+                    new EmployeeDTO(txtId.getText(),
+                            txtNIC.getText(),
+                            txtName.getText(),
+                            txtAddress.getText(),
+                            txtContact.getText(),
+                            txtEmail.getText(),
+                            txtSalary.getText()
+
+                    ));
+            if (add) {
+                new Alert(Alert.AlertType.INFORMATION, "Add Employee").show();
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 
     public void btnUpdateEmployee(ActionEvent actionEvent) {
-        EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
+       // EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
         try {
             boolean update = employeeModelDAO.update(
                     new EmployeeDTO(txtNIC.getText(),
@@ -71,6 +90,23 @@ public class ManageEmployeeFormController {
     }
 
     public void btnDeleteEmployee(ActionEvent actionEvent) {
+//        boolean delete = employeeModelDAO.delete(
+//                new EmployeeDTO(txtId.getText()));
+
+        String id = txtId.getText();
+        try {
+            boolean delete = employeeModelDAO.delete(id);
+            if (delete) {
+                Alert alert=new Alert(Alert.AlertType.INFORMATION,"Delete is successful");
+                alert.show();
+            }else {
+                Alert alert=new Alert(Alert.AlertType.ERROR,"Error");
+                alert.show();
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 
     public void radioButtonOnActionTeacher(ActionEvent actionEvent) {
@@ -109,7 +145,7 @@ public class ManageEmployeeFormController {
     }
 
     public void btnSearchEmployees(ActionEvent actionEvent) {
-        EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
+       // EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
         try {
             EmployeeDTO search = employeeModelDAO.search(Search.getText());
             if (search==null){
