@@ -31,7 +31,7 @@ public class PaymentsModelDAOImpl implements PaymentsModelDAO {
 
     @Override
     public boolean update(PaymentsDTO dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.execute("UPDATE Payments SET SID=?, cardNo=?,amount=?, payment_months=?,time=? WHERE SId=?", dto.getCarID(),dto.getAmount(),dto.getPayment_months(),dto.getTime(),dto.getSID());
+        return SqlUtil.execute("UPDATE Payments SET SID=?, amount=?, payment_months=?,time=? WHERE cardNo=? ",dto.getSID(),dto.getAmount(),dto.getPayment_months(),dto.getTime(),dto.getCarID());
 
     }
 
@@ -47,15 +47,15 @@ public class PaymentsModelDAOImpl implements PaymentsModelDAO {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return SqlUtil.execute("DELETE FROM Payments  WHERE SId=?",id);
+        return SqlUtil.execute("DELETE FROM Payments  WHERE CarID=?",id);
     }
 
     @Override
     public PaymentsDTO search(String id) throws SQLException, ClassNotFoundException {
-        ResultSet rst = SqlUtil.execute("SELECT * FROM Batch WHERE BID=?", id);
+        ResultSet rst = SqlUtil.execute("SELECT * FROM Payments WHERE CarID=?", id);
        PaymentsDTO paymentsDTO = null;
         if (rst.next()) {
-           paymentsDTO = new PaymentsDTO(id, rst.getString("CarID"), rst.getString("amount"), rst.getString("payment_months"), rst.getString("time"));
+           paymentsDTO = new PaymentsDTO( rst.getString("SID"),id, rst.getString("amount"), rst.getString("payment_months"), rst.getString("time"));
         }
         return paymentsDTO;
     }
