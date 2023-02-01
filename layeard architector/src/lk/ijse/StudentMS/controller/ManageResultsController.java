@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.dao.custom.PaymentsModelDAO;
+import lk.ijse.StudentMS.dao.custom.impl.PaymentsModelDAOImpl;
 
 import java.io.IOException;
 
@@ -17,8 +19,10 @@ public class ManageResultsController {
     public TableColumn PassORFail;
     public JFXTextField Search;
 
-
+    PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
     public void btnAddResult(ActionEvent actionEvent) throws IOException {
+        //PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
+
 
     }
 

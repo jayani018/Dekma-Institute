@@ -14,7 +14,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-
+import lk.ijse.StudentMS.dao.custom.TeacherModelDAO;
+import lk.ijse.StudentMS.dao.custom.impl.SubjectModelDAOImpl;
+import lk.ijse.StudentMS.dao.custom.impl.TeacherModelDAOImpl;
+import lk.ijse.StudentMS.model.SubjectDTO;
+import lk.ijse.StudentMS.model.TeacherDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -106,31 +110,85 @@ public class ManageTeacherFormController {
         }
 
     }
+    TeacherModelDAO teacherModelDAO = new TeacherModelDAOImpl();
 
     private void loadTableData() {
-
+        ObservableList<TeacherDTO> TeacherList = FXCollections.observableArrayList();
+        try {
+            ArrayList<TeacherDTO> teacherData = teacherModelDAO.getAll();
+            for (TeacherDTO teacher : teacherData) {
+                TeacherList.add(teacher);
+            }
+        } catch (SQLException | ClassNotFoundException x) {
+            x.printStackTrace();
+        }
+        tblTeacher.setItems(TeacherList);
     }
 
     private void cmbLoadData() throws SQLException, ClassNotFoundException {
+        try {
+            // StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
+            SubjectModelDAOImpl subjectModelDAO = new SubjectModelDAOImpl();
+            ArrayList<SubjectDTO> arrayList = subjectModelDAO.getAll();
 
+            String[] Subject = new String[arrayList.size()];
+
+
+            ObservableList obList= FXCollections.observableArrayList();
+            for (int i = 0; i < Subject.length; i++) {
+                obList.add(arrayList.get(i).getSUBID());
+            }
+            combSubId.setItems(obList);
+
+        } catch (SQLException | ClassNotFoundException throwables) {
+            System.out.println(throwables);
+        }
     }
 
     public void btnAdd(ActionEvent actionEvent) {
-        String subId = String.valueOf(combSubId.getValue());
-        String id = txtId.getText();
-        String NIC = txtNIC.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String contactNo = txtContactNo.getText();
-        String email = txtEmail.getText();
-        double salary = Double.parseDouble(txtSalary.getText());
-
-
+//        TeacherModelDAO teacherModelDAO = new TeacherModelDAOImpl();
+        try {
+            boolean add = teacherModelDAO.add(new TeacherDTO(txtId.getText(),
+                    combSubId.getValue(),
+                    txtNIC.getText(),
+                    txtName.getText(),
+                    txtAddress.getText(),
+                    txtContactNo.getText(),
+                    txtEmail.getText(),
+                    txtSalary.getText()
+            ));
+            if (add) {
+                new Alert(Alert.AlertType.INFORMATION, "Add Teacher").show();
+                loadTableData();
+                cmbLoadData();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Something Wrong").show();
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
 
 
     }
 
     public void btnSearch(ActionEvent actionEvent) {
+        try {
+            TeacherDTO search = teacherModelDAO.search(Search.getText());
+            if (search==null){
+                new Alert(Alert.AlertType.INFORMATION,"Not Teacher").show();
+            }else {
+                txtId.setText(search.getTID());
+                combSubId.setValue(search.getSUBID());
+                txtNIC.setText(search.getNIC());
+                txtName.setText(search.getName());
+                txtAddress.setText(search.getAddress());
+                txtContactNo.setText(search.getContact());
+                txtEmail.setText(search.getEmail());
+                txtSalary.setText(String.valueOf(search.getSalary()));
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void txtSearchOnAction(ActionEvent actionEvent) {
@@ -138,28 +196,43 @@ public class ManageTeacherFormController {
     }
 
     public void btnUpdate(ActionEvent actionEvent) {
-
-        String subId = String.valueOf(combSubId.getValue());
-        String id = txtId.getText();
-        String NIC = txtNIC.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String contactNo = txtContactNo.getText();
-        String email = txtEmail.getText();
-        double salary = Double.parseDouble(txtSalary.getText());
-
+        try {
+            boolean update = teacherModelDAO.update(new TeacherDTO((String) combSubId.getValue(),
+                    txtNIC.getText(),
+                    txtName.getText(),
+                    txtAddress.getText(),
+                    txtContactNo.getText(),
+                    txtEmail.getText(),
+                    txtSalary.getText(),
+                    txtId.getText()
+            ));
+            if (update) {
+                new Alert(Alert.AlertType.INFORMATION, "Update Employee").show();
+            }
+            loadTableData();
+            cmbLoadData();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 
-    public void btnDelete(ActionEvent actionEvent) {
-        String subId = String.valueOf(combSubId.getValue());
+    public void btnDelete(ActionEvent actionEvnt) {
         String id = txtId.getText();
-        String NIC = txtNIC.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String contactNo = txtContactNo.getText();
-        String email = txtEmail.getText();
-        double salary = Double.parseDouble(txtSalary.getText());
+        try {
+            boolean delete = teacherModelDAO.delete(id);
+            if (delete) {
+                Alert alert=new Alert(Alert.AlertType.INFORMATION,"Delete is successful");
+                alert.show();
+            }else {
+                Alert alert=new Alert(Alert.AlertType.ERROR,"Error");
+                alert.show();
+            }
+            loadTableData();
+            cmbLoadData();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
     }
           public void clear() {
         txtId.clear();

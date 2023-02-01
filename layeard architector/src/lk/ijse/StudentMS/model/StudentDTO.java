@@ -15,7 +15,7 @@ public class StudentDTO {
     }
 
 
-    public StudentDTO(String EID, String SID, String NIC, String subject, String exam_year, String name, String address, String contact, String email) {
+    public StudentDTO( String SID,String EID, String NIC, String subject, String exam_year, String name, String address, String contact, String email) {
         this.SID = SID;
         this.EID = EID;
         this.NIC = NIC;

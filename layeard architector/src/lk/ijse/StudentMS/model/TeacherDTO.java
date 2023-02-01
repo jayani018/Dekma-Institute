@@ -10,7 +10,7 @@ public class TeacherDTO {
     private String email;
     private Double salary;
 
-    public TeacherDTO() {
+    public TeacherDTO(String text, Object value, String txtNICText, String txtNameText, String txtAddressText, String txtContactNoText, String txtEmailText, String txtSalaryText) {
     }
 
     public TeacherDTO(String TID, String SUBID, String NIC, String name, String address, String contact, String email, Double salary) {

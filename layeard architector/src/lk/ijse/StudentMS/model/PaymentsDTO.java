@@ -6,16 +6,18 @@ public class PaymentsDTO {
     private String amount;
     private String payment_months;
     private String time;
+    private String date;
 
     public PaymentsDTO() {
     }
 
-    public PaymentsDTO(String SID, String carID, String amount, String payment_months, String time) {
+    public PaymentsDTO(String SID, String carID, String amount, String payment_months, String time, String date) {
         this.SID = SID;
         this.CarID = carID;
         this.amount = amount;
         this.payment_months = payment_months;
         this.time = time;
+        this.date = date;
     }
 
     public String getSID() {
@@ -58,14 +60,24 @@ public class PaymentsDTO {
         this.time = time;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+
     @Override
     public String toString() {
-        return "Payments{" +
+        return "PaymentsDTO{" +
                 "SID='" + SID + '\'' +
                 ", CarID='" + CarID + '\'' +
                 ", amount='" + amount + '\'' +
                 ", payment_months='" + payment_months + '\'' +
                 ", time='" + time + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
 }

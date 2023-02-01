@@ -8,9 +8,9 @@ public class BatchDTO {
     public BatchDTO() {
     }
 
-    public BatchDTO(String SID, String BID, String year) {
-        this.SID = SID;
+    public BatchDTO(String BID,String SID,  String year) {
         this.BID = BID;
+        this.SID = SID;
         this.year = year;
     }
 

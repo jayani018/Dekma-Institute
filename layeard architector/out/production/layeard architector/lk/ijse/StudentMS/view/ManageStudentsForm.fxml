@@ -21,7 +21,7 @@
             <TableColumn fx:id="Email" prefWidth="75.0" text="Email" />
             <TableColumn fx:id="CNumber" minWidth="0.0" prefWidth="94.0" text="Contact No" />
             <TableColumn fx:id="EY" minWidth="0.0" prefWidth="74.0" text="Exam Year" />
-            <TableColumn fx:id="Stream" maxWidth="300.0" prefWidth="63.0" text="Stream" />
+            <TableColumn fx:id="Subject" maxWidth="300.0" prefWidth="63.0" text="Subject" />
         </columns>
       </TableView>
       <Pane fx:id="pane3333" layoutX="-33.0" layoutY="-19.0" opacity="0.54" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: #95a5a6; -fx-background-radius: 50; -fx-border-radius: 30px; -fx-background-insets: 50; -fx-opacity: 30; -fx-max-height: 600; -fx-max-width: 700;">
@@ -46,8 +46,8 @@
             <JFXTextField fx:id="txtAdress" layoutX="441.0" layoutY="265.0" onKeyReleased="#stuOnKeyReleased" promptText="Address" />
             <Text layoutX="366.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No:" />
             <JFXTextField fx:id="txtCNo" layoutX="441.0" layoutY="309.0" onKeyReleased="#stuOnKeyReleased" promptText="Contact No" />
-            <Text layoutX="366.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stream" />
-            <JFXTextField fx:id="txtStream" layoutX="441.0" layoutY="353.0" onKeyReleased="#stuOnKeyReleased" promptText="Stream" />
+            <Text layoutX="366.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject" />
+            <JFXTextField fx:id="txtSubject" layoutX="441.0" layoutY="353.0" onKeyReleased="#stuOnKeyReleased" promptText="Subject" />
             <JFXButton layoutX="153.0" layoutY="434.0" onAction="#btnAddStudent" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #2196F3; -fx-background-radius: 30;" text="Add " />
             <JFXButton layoutX="283.0" layoutY="434.0" onAction="#btnUpdateStudent" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #43A047; -fx-background-radius: 30;" text="Update " />
             <JFXButton layoutX="411.0" layoutY="434.0" onAction="#btnDeleteStudent" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #F44336; -fx-background-radius: 30;" text="Delete" />

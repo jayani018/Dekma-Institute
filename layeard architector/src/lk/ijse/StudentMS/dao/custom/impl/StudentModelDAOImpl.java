@@ -15,7 +15,7 @@ public class StudentModelDAOImpl implements StudentModelDAO {
         ArrayList<StudentDTO> Student = new ArrayList<>();
         ResultSet rst = SqlUtil.execute("SELECT * FROM Student");
         while (rst.next()){
-            StudentDTO studentDTO = new StudentDTO(rst.getString("SID"), rst.getString("EID"), rst.getString("NIC"), rst.getString("stream"), rst.getString("exam_year"), rst.getString("name"), rst.getString("address"), rst.getString("contact"), rst.getString("email"));
+            StudentDTO studentDTO = new StudentDTO(rst.getString(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9));
             Student.add(studentDTO);
         }
         return Student;

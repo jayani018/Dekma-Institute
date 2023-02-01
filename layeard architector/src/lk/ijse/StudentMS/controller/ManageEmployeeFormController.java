@@ -2,11 +2,14 @@ package lk.ijse.StudentMS.controller;
 
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.StudentMS.dao.custom.EmployeeModelDAO;
 import lk.ijse.StudentMS.dao.custom.impl.EmployeeModelDAOImpl;
@@ -14,6 +17,7 @@ import lk.ijse.StudentMS.model.EmployeeDTO;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ManageEmployeeFormController {
     public AnchorPane pane;
@@ -62,6 +66,8 @@ public class ManageEmployeeFormController {
             if (add) {
                 new Alert(Alert.AlertType.INFORMATION, "Add Employee").show();
             }
+            loadTableData();
+
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -84,6 +90,7 @@ public class ManageEmployeeFormController {
             if (update) {
                 new Alert(Alert.AlertType.INFORMATION, "Update Employee").show();
             }
+            loadTableData();
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -103,6 +110,7 @@ public class ManageEmployeeFormController {
                 Alert alert=new Alert(Alert.AlertType.ERROR,"Error");
                 alert.show();
             }
+            loadTableData();
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -133,7 +141,14 @@ public class ManageEmployeeFormController {
 
 
     private void tableInit() {
-
+        EID.setCellValueFactory(new PropertyValueFactory<>("EID"));
+        NIC.setCellValueFactory(new PropertyValueFactory<>("NIC"));
+        Name.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        Address.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        CNumber.setCellValueFactory(new PropertyValueFactory<>("Contact NO"));
+        Email.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        Salary.setCellValueFactory(new PropertyValueFactory<>("Salary"));
+        loadTableData();
     }
 
     public void initial() {
@@ -165,6 +180,20 @@ public class ManageEmployeeFormController {
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    private void loadTableData() {
+        ObservableList<EmployeeDTO> EmployeeList = FXCollections.observableArrayList();
+        try {
+            ArrayList<EmployeeDTO> employeeData = employeeModelDAO.getAll();
+            for (EmployeeDTO employee : employeeData) {
+                EmployeeList.add(employee);
+            }
+        } catch (SQLException | ClassNotFoundException x) {
+            x.printStackTrace();
+        }
+        table.setItems(EmployeeList);
+
     }
 }
 

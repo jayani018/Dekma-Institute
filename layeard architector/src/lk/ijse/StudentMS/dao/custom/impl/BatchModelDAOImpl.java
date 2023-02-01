@@ -15,7 +15,7 @@ public class BatchModelDAOImpl implements BatchModelDAO {
         ArrayList<BatchDTO> Batch = new ArrayList<>();
         ResultSet rst = SqlUtil.execute("SELECT * FROM Batch");
         while (rst.next()){
-            BatchDTO batchDTO = new BatchDTO(rst.getString("BID"), rst.getString("SID"), rst.getString("year"));
+            BatchDTO batchDTO = new BatchDTO(rst.getString(1), rst.getString(2), rst.getString(3));
             Batch.add(batchDTO);
         }
 
@@ -25,7 +25,7 @@ public class BatchModelDAOImpl implements BatchModelDAO {
 
     @Override
     public boolean add(BatchDTO dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.execute("INSERT INTO Batch VALUES (?,?,?)", dto.getBID(), dto.getYear(), dto.getSID());
+        return SqlUtil.execute("INSERT INTO Batch VALUES (?,?,?)", dto.getBID(), dto.getSID(), dto.getYear());
     }
 
     @Override
