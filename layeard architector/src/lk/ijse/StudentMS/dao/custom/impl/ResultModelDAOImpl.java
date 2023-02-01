@@ -26,7 +26,7 @@ public class ResultModelDAOImpl implements ResultModelDAO {
     }
 
     @Override
-    public boolean update(ResultDTO entity) throws SQLException, ClassNotFoundException {
+    public boolean update(ResultDTO dto) throws SQLException, ClassNotFoundException {
       return SqlUtil.execute("UPDATE student_result SET SID=?,SUBID=?,result=?  WHERE TID=?");
     }
 

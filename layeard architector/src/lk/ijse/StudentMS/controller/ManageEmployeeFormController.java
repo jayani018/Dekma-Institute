@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.bo.custom.Impl.EmployeeBOImpl;
 import lk.ijse.StudentMS.dao.custom.EmployeeModelDAO;
 import lk.ijse.StudentMS.dao.custom.impl.EmployeeModelDAOImpl;
 import lk.ijse.StudentMS.model.EmployeeDTO;
@@ -49,9 +50,12 @@ public class ManageEmployeeFormController {
     private String role;
 
     EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
+    EmployeeBOImpl employeeBO = new EmployeeBOImpl();
+
 
     public void btnAddEmployee(ActionEvent actionEvent) throws IOException {
       //  EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
+//        EmployeeBOImpl employeeBO = new EmployeeBOImpl();
         try {
             boolean add = employeeModelDAO.add(
                     new EmployeeDTO(txtId.getText(),
