@@ -1,4 +1,6 @@
 package lk.ijse.StudentMS.bo.custom.Impl;
 
-public class TimeSheduleBOImpl {
+import lk.ijse.StudentMS.bo.custom.TimeSheduleBO;
+
+public class TimeSheduleBOImpl implements TimeSheduleBO {
 }

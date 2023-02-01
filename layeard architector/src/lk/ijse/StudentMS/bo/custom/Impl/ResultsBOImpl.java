@@ -1,4 +1,6 @@
 package lk.ijse.StudentMS.bo.custom.Impl;
 
-public class ResultsBOImpl {
+import lk.ijse.StudentMS.bo.custom.ResultsBO;
+
+public class ResultsBOImpl implements ResultsBO {
 }

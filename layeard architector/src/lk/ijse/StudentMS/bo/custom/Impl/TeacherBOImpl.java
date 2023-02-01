@@ -1,4 +1,6 @@
 package lk.ijse.StudentMS.bo.custom.Impl;
 
-public class TeacherBOImpl {
+import lk.ijse.StudentMS.bo.custom.TeacherBO;
+
+public class TeacherBOImpl implements TeacherBO {
 }
