@@ -10,8 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.StudentMS.dao.custom.PaymentsModelDAO;
-import lk.ijse.StudentMS.dao.custom.impl.PaymentsModelDAOImpl;
+import lk.ijse.StudentMS.bo.custom.Impl.PaymentsBOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.StudentModelDAOImpl;
 import lk.ijse.StudentMS.model.PaymentsDTO;
 import lk.ijse.StudentMS.model.StudentDTO;
@@ -35,13 +34,14 @@ public class ManagePaymentsFormController {
     public JFXTextField txtDate;
     public TableColumn Date;
 
-    PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
+   // PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
     StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
+    PaymentsBOImpl paymentsBO = new PaymentsBOImpl();
 
     public void btnAddPayments(ActionEvent actionEvent) throws IOException {
 //        PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
         try {
-            boolean add = paymentsModelDAO.add(
+            boolean add = paymentsBO.addPayments(
                     new PaymentsDTO(
                             (String) combStudentId.getValue(),
                             txtCardNo.getText(),
@@ -62,7 +62,7 @@ public class ManagePaymentsFormController {
 
     public void btnUpdatePayment(ActionEvent actionEvent) {
         try {
-            boolean update = paymentsModelDAO.update(
+            boolean update = paymentsBO.updatePayments(
                     new PaymentsDTO((String) combStudentId.getValue(),
                             txtAmount.getText(),
                             txtPaymentsMonth.getText(),
@@ -84,7 +84,7 @@ public class ManagePaymentsFormController {
     public void btnDeletePayment(ActionEvent actionEvent) {
         String id = txtCardNo.getText();
         try {
-            boolean delete = paymentsModelDAO.delete(id);
+            boolean delete = paymentsBO.deletePayments(id);
             if (delete){
                 new Alert(Alert.AlertType.INFORMATION, "Delete Payments").show();
             }else {
@@ -136,7 +136,7 @@ public class ManagePaymentsFormController {
     private void tableLoad() {
         ObservableList<PaymentsDTO> PaymentsList = FXCollections.observableArrayList();
         try {
-            ArrayList<PaymentsDTO> paymentsData = paymentsModelDAO.getAll();
+            ArrayList<PaymentsDTO> paymentsData = paymentsBO.getAllPayments();
             for (PaymentsDTO payments : paymentsData) {
                 PaymentsList.add(payments);
             }
