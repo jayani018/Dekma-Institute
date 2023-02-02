@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.bo.custom.Impl.ResultsBOImpl;
 import lk.ijse.StudentMS.dao.custom.PaymentsModelDAO;
 import lk.ijse.StudentMS.dao.custom.impl.PaymentsModelDAOImpl;
 
@@ -20,6 +21,7 @@ public class ManageResultsController {
     public JFXTextField Search;
 
     PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
+    ResultsBOImpl resultsBO = new ResultsBOImpl();
     public void btnAddResult(ActionEvent actionEvent) throws IOException {
         //PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
 
