@@ -12,9 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.StudentMS.dao.custom.StudentModelDAO;
+import lk.ijse.StudentMS.bo.custom.Impl.StudentsBOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.EmployeeModelDAOImpl;
-import lk.ijse.StudentMS.dao.custom.impl.StudentModelDAOImpl;
 import lk.ijse.StudentMS.model.EmployeeDTO;
 import lk.ijse.StudentMS.model.StudentDTO;
 
@@ -113,12 +112,15 @@ public class ManageStudentsFormController {
     }
 
 
-    StudentModelDAO studentModelDAO = new StudentModelDAOImpl();
+   // StudentModelDAO studentModelDAO = new StudentModelDAOImpl();
+   EmployeeModelDAOImpl employeeModelDAO = new EmployeeModelDAOImpl();
+   StudentsBOImpl studentsBO = new StudentsBOImpl();
+
 
     private void LoadTableData() {
         ObservableList<StudentDTO> StudentList = FXCollections.observableArrayList();
         try {
-            ArrayList<StudentDTO> studentData = studentModelDAO.getAll();
+            ArrayList<StudentDTO> studentData = studentsBO.getAll();
             for (StudentDTO student : studentData) {
                 StudentList.add(student);
             }
@@ -133,7 +135,7 @@ public class ManageStudentsFormController {
 
     public void btnUpdateStudent(ActionEvent actionEvent) {
         try {
-            boolean update = studentModelDAO.update
+            boolean update = studentsBO.update
                     (new StudentDTO(combEmployeeId.getValue(),
                             txtNIC.getText(),
                             txtSubject.getText(),
@@ -159,7 +161,7 @@ public class ManageStudentsFormController {
 
     private void cmbLoadData() throws SQLException, ClassNotFoundException {
             try {
-                EmployeeModelDAOImpl employeeModelDAO = new EmployeeModelDAOImpl();
+//                EmployeeModelDAOImpl employeeModelDAO = new EmployeeModelDAOImpl();
                 ArrayList<EmployeeDTO> arrayList =employeeModelDAO.getAll();
 
                 String[] Employee = new String[arrayList.size()];
@@ -182,7 +184,7 @@ public class ManageStudentsFormController {
     public void btnAddStudent(ActionEvent actionEvent) {
 //        SubjectModelDAO subjectModelDAO = new SubjectModelDAOImpl();
             try {
-                boolean add = studentModelDAO.add(
+                boolean add = studentsBO.add(
                         new StudentDTO(txtID.getText(),
                                 combEmployeeId.getValue(),
                                 txtNIC.getText(),
@@ -206,7 +208,7 @@ public class ManageStudentsFormController {
     public void btnDeleteStudent(ActionEvent actionEvent) {
         String id = txtID.getText();
         try {
-            boolean delete = studentModelDAO.delete(id);
+            boolean delete = studentsBO.delete(id);
             if (delete) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Delete is successful");
                 alert.show();
@@ -223,7 +225,7 @@ public class ManageStudentsFormController {
 
     public void btnSearch(ActionEvent actionEvent) {
         try {
-            StudentDTO search =studentModelDAO.search(Search.getText());
+            StudentDTO search =studentsBO.search(Search.getText());
             if (search == null) {
                 new Alert(Alert.AlertType.INFORMATION, "Not Student").show();
             } else {

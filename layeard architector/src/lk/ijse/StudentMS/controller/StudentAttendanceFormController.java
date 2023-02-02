@@ -11,8 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.StudentMS.dao.custom.StudentAttendanceModelDAO;
-import lk.ijse.StudentMS.dao.custom.impl.StudentAttendanceModelDAOImpl;
+import lk.ijse.StudentMS.bo.custom.Impl.StudentAttendanceBOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.StudentModelDAOImpl;
 import lk.ijse.StudentMS.model.StudentAttendanceDTO;
 import lk.ijse.StudentMS.model.StudentDTO;
@@ -31,12 +30,14 @@ public class StudentAttendanceFormController {
     public JFXTextField Search;
     public JFXDatePicker txtdate;
 
-    StudentAttendanceModelDAO studentAttendanceModelDAO = new StudentAttendanceModelDAOImpl();
+   // StudentAttendanceModelDAO studentAttendanceModelDAO = new StudentAttendanceModelDAOImpl();
+    StudentAttendanceBOImpl studentAttendanceBO = new StudentAttendanceBOImpl();
 
     public void btnAddSA(ActionEvent actionEvent) {
+//        StudentAttendanceBOImpl studentAttendanceBO = new StudentAttendanceBOImpl();
 //        StudentAttendanceModelDAO studentAttendanceModelDAO = new StudentAttendanceModelDAOImpl();
         try {
-            boolean add = studentAttendanceModelDAO.add(
+            boolean add = studentAttendanceBO.add(
                     new StudentAttendanceDTO((String) combStudentId.getValue(),
                             txtDate.getText(),
                             txtTime.getText()
@@ -54,7 +55,7 @@ public class StudentAttendanceFormController {
 
     public void btnUpdateSA(ActionEvent actionEvent) {
         try {
-            studentAttendanceModelDAO.update(new StudentAttendanceDTO(txtDate.getText(),
+            studentAttendanceBO.update(new StudentAttendanceDTO(txtDate.getText(),
                     txtTime.getText(),
                     (String) combStudentId.getValue()
             ));
@@ -68,7 +69,7 @@ public class StudentAttendanceFormController {
     public void btnDeleteSA(ActionEvent actionEvent) {
         Object value = combStudentId.getValue();
         try {
-            boolean delete = studentAttendanceModelDAO.delete((String) value);
+            boolean delete = studentAttendanceBO.delete((String) value);
             if (delete) {
                 Alert alert=new Alert(Alert.AlertType.INFORMATION,"Delete is successful");
                 alert.show();
@@ -87,7 +88,7 @@ public class StudentAttendanceFormController {
     private void loadTableData() {
         ObservableList<StudentAttendanceDTO> studentAttendanceList = FXCollections.observableArrayList();
         try {
-            ArrayList<StudentAttendanceDTO> studentAttendanceData = studentAttendanceModelDAO.getAll();
+            ArrayList<StudentAttendanceDTO> studentAttendanceData = studentAttendanceBO.getAll();
             for (StudentAttendanceDTO studentAttendance : studentAttendanceData) {
                 studentAttendanceList.add(studentAttendance);
             }

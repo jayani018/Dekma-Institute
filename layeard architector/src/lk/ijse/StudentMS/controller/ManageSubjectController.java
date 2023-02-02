@@ -9,8 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.StudentMS.dao.custom.SubjectModelDAO;
-import lk.ijse.StudentMS.dao.custom.impl.SubjectModelDAOImpl;
+import lk.ijse.StudentMS.bo.custom.Impl.SubjectBOImpl;
 import lk.ijse.StudentMS.model.SubjectDTO;
 
 import java.io.IOException;
@@ -27,12 +26,13 @@ public class ManageSubjectController {
     public JFXTextField txtName;
     public TableColumn Name1;
 
-    SubjectModelDAO subjectModelDAO = new SubjectModelDAOImpl();
+   // SubjectModelDAO subjectModelDAO = new SubjectModelDAOImpl();
+    SubjectBOImpl subjectBO = new SubjectBOImpl();
 
     public void btnAddSubject(ActionEvent actionEvent) throws IOException {
 //        SubjectModelDAO subjectModelDAO = new SubjectModelDAOImpl();
         try {
-            boolean add = subjectModelDAO.add(
+            boolean add = subjectBO.add(
                     new SubjectDTO(txtSubId.getText(),
                     txtName.getText()
             ));
@@ -48,7 +48,7 @@ public class ManageSubjectController {
 
     public void btnUpdateSubject(ActionEvent actionEvent) {
         try {
-            boolean update = subjectModelDAO.update(new SubjectDTO(txtName.getText(),
+            boolean update = subjectBO.update(new SubjectDTO(txtName.getText(),
                     txtSubId.getText()
             ));
             if (update) {
@@ -64,7 +64,7 @@ public class ManageSubjectController {
     public void btnDeleteSubject(ActionEvent actionEvent) {
         String id = txtSubId.getText();
         try {
-            boolean delete = subjectModelDAO.delete(id);
+            boolean delete = subjectBO.delete(id);
             if (delete) {
                 Alert alert=new Alert(Alert.AlertType.INFORMATION,"Delete is successful");
                 alert.show();
@@ -85,7 +85,7 @@ public class ManageSubjectController {
 
     public void btnSearch(ActionEvent actionEvent) {
         try {
-            SubjectDTO search = subjectModelDAO.search(Search.getText());
+            SubjectDTO search = subjectBO.search(Search.getText());
             if (search==null){
                 new Alert(Alert.AlertType.INFORMATION,"Not Employee").show();
             }else {
@@ -99,7 +99,7 @@ public class ManageSubjectController {
     private void loadTableData() {
         ObservableList<SubjectDTO> SubjectList = FXCollections.observableArrayList();
         try {
-            ArrayList<SubjectDTO> subjectData = subjectModelDAO.getAll();
+            ArrayList<SubjectDTO> subjectData = subjectBO.getAll();
             for (SubjectDTO subject : subjectData) {
                 SubjectList.add(subject);
             }

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.bo.custom.Impl.TimeSheduleBOImpl;
 
 public class TimeSheduleFormController {
     public AnchorPane pane;
@@ -20,8 +21,10 @@ public class TimeSheduleFormController {
     public JFXComboBox combSubject;
     public JFXComboBox combTeacher;
 
+    TimeSheduleBOImpl timeSheduleBO = new TimeSheduleBOImpl();
 
     public void btnAddTSM(ActionEvent actionEvent) {
+//        TimeSheduleBOImpl timeSheduleBO = new TimeSheduleBOImpl();
 
 
     }
