@@ -12,8 +12,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.StudentMS.bo.custom.Impl.EmployeeBOImpl;
-import lk.ijse.StudentMS.dao.custom.EmployeeModelDAO;
-import lk.ijse.StudentMS.dao.custom.impl.EmployeeModelDAOImpl;
 import lk.ijse.StudentMS.model.EmployeeDTO;
 
 import java.io.IOException;
@@ -49,7 +47,7 @@ public class ManageEmployeeFormController {
     public JFXTextField txtPassword;
     private String role;
 
-    EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
+    //EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
     EmployeeBOImpl employeeBO = new EmployeeBOImpl();
 
 
@@ -57,7 +55,7 @@ public class ManageEmployeeFormController {
       //  EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
 //        EmployeeBOImpl employeeBO = new EmployeeBOImpl();
         try {
-            boolean add = employeeModelDAO.add(
+            boolean add = employeeBO.addEmployee(
                     new EmployeeDTO(txtId.getText(),
                             txtNIC.getText(),
                             txtName.getText(),
@@ -81,7 +79,7 @@ public class ManageEmployeeFormController {
     public void btnUpdateEmployee(ActionEvent actionEvent) {
        // EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
         try {
-            boolean update = employeeModelDAO.update(
+            boolean update = employeeBO.updateEmployee(
                     new EmployeeDTO(txtNIC.getText(),
                             txtName.getText(),
                             txtAddress.getText(),
@@ -106,7 +104,7 @@ public class ManageEmployeeFormController {
 
         String id = txtId.getText();
         try {
-            boolean delete = employeeModelDAO.delete(id);
+            boolean delete = employeeBO.deleteEmployee(id);
             if (delete) {
                 Alert alert=new Alert(Alert.AlertType.INFORMATION,"Delete is successful");
                 alert.show();
@@ -166,7 +164,7 @@ public class ManageEmployeeFormController {
     public void btnSearchEmployees(ActionEvent actionEvent) {
        // EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
         try {
-            EmployeeDTO search = employeeModelDAO.search(Search.getText());
+            EmployeeDTO search = employeeBO.searchEmployee(Search.getText());
             if (search==null){
                 new Alert(Alert.AlertType.INFORMATION,"Not Employee").show();
             }else {
@@ -189,7 +187,7 @@ public class ManageEmployeeFormController {
     private void loadTableData() {
         ObservableList<EmployeeDTO> EmployeeList = FXCollections.observableArrayList();
         try {
-            ArrayList<EmployeeDTO> employeeData = employeeModelDAO.getAll();
+            ArrayList<EmployeeDTO> employeeData = employeeBO.getAllEmployee();
             for (EmployeeDTO employee : employeeData) {
                 EmployeeList.add(employee);
             }
