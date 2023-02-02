@@ -115,7 +115,7 @@ public class ManageTeacherFormController {
     private void loadTableData() {
         ObservableList<TeacherDTO> TeacherList = FXCollections.observableArrayList();
         try {
-            ArrayList<TeacherDTO> teacherData = teacherBO.getAll();
+            ArrayList<TeacherDTO> teacherData = teacherBO.getAllTeacher();
             for (TeacherDTO teacher : teacherData) {
                 TeacherList.add(teacher);
             }
@@ -148,7 +148,7 @@ public class ManageTeacherFormController {
     public void btnAdd(ActionEvent actionEvent) {
 //        TeacherModelDAO teacherModelDAO = new TeacherModelDAOImpl();
         try {
-            boolean add = teacherBO.add(new TeacherDTO(txtId.getText(),
+            boolean add = teacherBO.addTeacher(new TeacherDTO(txtId.getText(),
                     combSubId.getValue(),
                     txtNIC.getText(),
                     txtName.getText(),
@@ -173,7 +173,7 @@ public class ManageTeacherFormController {
 
     public void btnSearch(ActionEvent actionEvent) {
         try {
-            TeacherDTO search = teacherBO.search(Search.getText());
+            TeacherDTO search = teacherBO.searchTeacher(Search.getText());
             if (search==null){
                 new Alert(Alert.AlertType.INFORMATION,"Not Teacher").show();
             }else {
@@ -197,7 +197,7 @@ public class ManageTeacherFormController {
 
     public void btnUpdate(ActionEvent actionEvent) {
         try {
-            boolean update = teacherBO.update(new TeacherDTO((String) combSubId.getValue(),
+            boolean update = teacherBO.updateTeacher(new TeacherDTO((String) combSubId.getValue(),
                     txtNIC.getText(),
                     txtName.getText(),
                     txtAddress.getText(),
@@ -220,7 +220,7 @@ public class ManageTeacherFormController {
     public void btnDelete(ActionEvent actionEvnt) {
         String id = txtId.getText();
         try {
-            boolean delete = teacherBO.delete(id);
+            boolean delete = teacherBO.deleteTeacher(id);
             if (delete) {
                 Alert alert=new Alert(Alert.AlertType.INFORMATION,"Delete is successful");
                 alert.show();

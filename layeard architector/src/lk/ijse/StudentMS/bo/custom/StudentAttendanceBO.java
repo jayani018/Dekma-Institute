@@ -6,17 +6,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface StudentAttendanceBO {
-    public ArrayList<StudentAttendanceDTO> getAll() throws SQLException, ClassNotFoundException ;
+    public ArrayList<StudentAttendanceDTO> getAllStudentAttendance() throws SQLException, ClassNotFoundException ;
 
-    public boolean add(StudentAttendanceDTO dto) throws SQLException, ClassNotFoundException ;
+    public boolean addStudentAttendance(StudentAttendanceDTO dto) throws SQLException, ClassNotFoundException ;
 
-    public boolean update(StudentAttendanceDTO dto) throws SQLException, ClassNotFoundException ;
+    public boolean updateStudentAttendance(StudentAttendanceDTO dto) throws SQLException, ClassNotFoundException ;
 
-    public boolean exist(String id) throws SQLException, ClassNotFoundException;
+    public boolean existStudentAttendance(String id) throws SQLException, ClassNotFoundException;
 
-    public String generateNewID() throws SQLException, ClassNotFoundException ;
+    public String generateNewIDStudentAttendance() throws SQLException, ClassNotFoundException ;
 
-    public boolean delete(String id) throws SQLException, ClassNotFoundException;
+    public boolean deleteStudentAttendance(String id) throws SQLException, ClassNotFoundException;
 
-    public StudentAttendanceDTO search(String id) throws SQLException, ClassNotFoundException ;
+    public StudentAttendanceDTO searchStudentAttendance(String id) throws SQLException, ClassNotFoundException ;
 }

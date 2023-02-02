@@ -12,37 +12,37 @@ public class StudentsBOImpl implements StudentsBO {
 
    StudentModelDAO studentModelDAO = new StudentModelDAOImpl();
 
-    public ArrayList<StudentDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<StudentDTO> getAllStudent() throws SQLException, ClassNotFoundException {
         return studentModelDAO.getAll();
     }
 
     @Override
-    public boolean add(StudentDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean addStudent(StudentDTO dto) throws SQLException, ClassNotFoundException {
         return studentModelDAO.add(dto);
     }
 
     @Override
-    public boolean update(StudentDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean updateStudent(StudentDTO dto) throws SQLException, ClassNotFoundException {
         return studentModelDAO.update(dto);
     }
 
     @Override
-    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+    public boolean existStudent(String id) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public String generateNewID() throws SQLException, ClassNotFoundException {
+    public String generateNewIDStudent() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+    public boolean deleteStudent(String id) throws SQLException, ClassNotFoundException {
         return studentModelDAO.delete(id);
     }
 
     @Override
-    public StudentDTO search(String id) throws SQLException, ClassNotFoundException {
+    public StudentDTO searchStudent(String id) throws SQLException, ClassNotFoundException {
         return studentModelDAO.search(id);
     }
 }

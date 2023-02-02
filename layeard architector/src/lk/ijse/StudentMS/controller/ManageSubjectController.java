@@ -32,7 +32,7 @@ public class ManageSubjectController {
     public void btnAddSubject(ActionEvent actionEvent) throws IOException {
 //        SubjectModelDAO subjectModelDAO = new SubjectModelDAOImpl();
         try {
-            boolean add = subjectBO.add(
+            boolean add = subjectBO.addSubject(
                     new SubjectDTO(txtSubId.getText(),
                     txtName.getText()
             ));
@@ -48,7 +48,7 @@ public class ManageSubjectController {
 
     public void btnUpdateSubject(ActionEvent actionEvent) {
         try {
-            boolean update = subjectBO.update(new SubjectDTO(txtName.getText(),
+            boolean update = subjectBO.updateSubject(new SubjectDTO(txtName.getText(),
                     txtSubId.getText()
             ));
             if (update) {
@@ -64,7 +64,7 @@ public class ManageSubjectController {
     public void btnDeleteSubject(ActionEvent actionEvent) {
         String id = txtSubId.getText();
         try {
-            boolean delete = subjectBO.delete(id);
+            boolean delete = subjectBO.deleteSubject(id);
             if (delete) {
                 Alert alert=new Alert(Alert.AlertType.INFORMATION,"Delete is successful");
                 alert.show();
@@ -85,7 +85,7 @@ public class ManageSubjectController {
 
     public void btnSearch(ActionEvent actionEvent) {
         try {
-            SubjectDTO search = subjectBO.search(Search.getText());
+            SubjectDTO search = subjectBO.searchSubject(Search.getText());
             if (search==null){
                 new Alert(Alert.AlertType.INFORMATION,"Not Employee").show();
             }else {
@@ -99,7 +99,7 @@ public class ManageSubjectController {
     private void loadTableData() {
         ObservableList<SubjectDTO> SubjectList = FXCollections.observableArrayList();
         try {
-            ArrayList<SubjectDTO> subjectData = subjectBO.getAll();
+            ArrayList<SubjectDTO> subjectData = subjectBO.getAllSubject();
             for (SubjectDTO subject : subjectData) {
                 SubjectList.add(subject);
             }

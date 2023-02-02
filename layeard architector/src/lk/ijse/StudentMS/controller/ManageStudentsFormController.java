@@ -120,7 +120,7 @@ public class ManageStudentsFormController {
     private void LoadTableData() {
         ObservableList<StudentDTO> StudentList = FXCollections.observableArrayList();
         try {
-            ArrayList<StudentDTO> studentData = studentsBO.getAll();
+            ArrayList<StudentDTO> studentData = studentsBO.getAllStudent();
             for (StudentDTO student : studentData) {
                 StudentList.add(student);
             }
@@ -135,7 +135,7 @@ public class ManageStudentsFormController {
 
     public void btnUpdateStudent(ActionEvent actionEvent) {
         try {
-            boolean update = studentsBO.update
+            boolean update = studentsBO.updateStudent
                     (new StudentDTO(combEmployeeId.getValue(),
                             txtNIC.getText(),
                             txtSubject.getText(),
@@ -184,7 +184,7 @@ public class ManageStudentsFormController {
     public void btnAddStudent(ActionEvent actionEvent) {
 //        SubjectModelDAO subjectModelDAO = new SubjectModelDAOImpl();
             try {
-                boolean add = studentsBO.add(
+                boolean add = studentsBO.addStudent(
                         new StudentDTO(txtID.getText(),
                                 combEmployeeId.getValue(),
                                 txtNIC.getText(),
@@ -208,7 +208,7 @@ public class ManageStudentsFormController {
     public void btnDeleteStudent(ActionEvent actionEvent) {
         String id = txtID.getText();
         try {
-            boolean delete = studentsBO.delete(id);
+            boolean delete = studentsBO.deleteStudent(id);
             if (delete) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Delete is successful");
                 alert.show();
@@ -225,7 +225,7 @@ public class ManageStudentsFormController {
 
     public void btnSearch(ActionEvent actionEvent) {
         try {
-            StudentDTO search =studentsBO.search(Search.getText());
+            StudentDTO search =studentsBO.searchStudent(Search.getText());
             if (search == null) {
                 new Alert(Alert.AlertType.INFORMATION, "Not Student").show();
             } else {

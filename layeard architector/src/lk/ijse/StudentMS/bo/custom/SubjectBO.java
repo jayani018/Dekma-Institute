@@ -6,17 +6,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface SubjectBO {
-    public ArrayList<SubjectDTO> getAll() throws SQLException, ClassNotFoundException;
+    public ArrayList<SubjectDTO> getAllSubject() throws SQLException, ClassNotFoundException;
 
-    public boolean add(SubjectDTO dto) throws SQLException, ClassNotFoundException;
+    public boolean addSubject(SubjectDTO dto) throws SQLException, ClassNotFoundException;
 
-    public boolean update(SubjectDTO dto) throws SQLException, ClassNotFoundException ;
+    public boolean updateSubject(SubjectDTO dto) throws SQLException, ClassNotFoundException ;
 
-    public boolean exist(String id) throws SQLException, ClassNotFoundException;
+    public boolean existSubject(String id) throws SQLException, ClassNotFoundException;
 
-    public String generateNewID() throws SQLException, ClassNotFoundException ;
+    public String generateNewIDSubject() throws SQLException, ClassNotFoundException ;
 
-    public boolean delete(String id) throws SQLException, ClassNotFoundException;
+    public boolean deleteSubject(String id) throws SQLException, ClassNotFoundException;
 
-    public SubjectDTO search(String id) throws SQLException, ClassNotFoundException ;
+    public SubjectDTO searchSubject(String id) throws SQLException, ClassNotFoundException ;
 }

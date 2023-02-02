@@ -12,37 +12,37 @@ public class SubjectBOImpl implements SubjectBO {
 
     SubjectModelDAO subjectModelDAO = new SubjectModelDAOImpl();
     @Override
-    public ArrayList<SubjectDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<SubjectDTO> getAllSubject() throws SQLException, ClassNotFoundException {
         return subjectModelDAO.getAll();
     }
 
     @Override
-    public boolean add(SubjectDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean addSubject(SubjectDTO dto) throws SQLException, ClassNotFoundException {
         return subjectModelDAO.add(dto);
     }
 
     @Override
-    public boolean update(SubjectDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean updateSubject(SubjectDTO dto) throws SQLException, ClassNotFoundException {
         return subjectModelDAO.update(dto);
     }
 
     @Override
-    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+    public boolean existSubject(String id) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public String generateNewID() throws SQLException, ClassNotFoundException {
+    public String generateNewIDSubject() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+    public boolean deleteSubject(String id) throws SQLException, ClassNotFoundException {
         return subjectModelDAO.delete(id);
     }
 
     @Override
-    public SubjectDTO search(String id) throws SQLException, ClassNotFoundException {
+    public SubjectDTO searchSubject(String id) throws SQLException, ClassNotFoundException {
         return subjectModelDAO.search(id);
     }
 }

@@ -12,37 +12,37 @@ public class TeacherBOImpl implements TeacherBO {
 
     TeacherModelDAO teacherModelDAO = new TeacherModelDAOImpl();
     @Override
-    public ArrayList<TeacherDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<TeacherDTO> getAllTeacher() throws SQLException, ClassNotFoundException {
         return teacherModelDAO.getAll();
     }
 
     @Override
-    public boolean add(TeacherDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean addTeacher(TeacherDTO dto) throws SQLException, ClassNotFoundException {
         return teacherModelDAO.add(dto);
     }
 
     @Override
-    public boolean update(TeacherDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean updateTeacher(TeacherDTO dto) throws SQLException, ClassNotFoundException {
         return teacherModelDAO.update(dto);
     }
 
     @Override
-    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+    public boolean existTeacher(String id) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public String generateNewID() throws SQLException, ClassNotFoundException {
+    public String generateNewIDTeacher() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+    public boolean deleteTeacher(String id) throws SQLException, ClassNotFoundException {
         return teacherModelDAO.delete(id);
     }
 
     @Override
-    public TeacherDTO search(String id) throws SQLException, ClassNotFoundException {
+    public TeacherDTO searchTeacher(String id) throws SQLException, ClassNotFoundException {
         return teacherModelDAO.search(id);
     }
 }

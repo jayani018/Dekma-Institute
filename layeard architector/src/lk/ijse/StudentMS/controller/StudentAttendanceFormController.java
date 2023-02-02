@@ -37,7 +37,7 @@ public class StudentAttendanceFormController {
 //        StudentAttendanceBOImpl studentAttendanceBO = new StudentAttendanceBOImpl();
 //        StudentAttendanceModelDAO studentAttendanceModelDAO = new StudentAttendanceModelDAOImpl();
         try {
-            boolean add = studentAttendanceBO.add(
+            boolean add = studentAttendanceBO.addStudentAttendance(
                     new StudentAttendanceDTO((String) combStudentId.getValue(),
                             txtDate.getText(),
                             txtTime.getText()
@@ -55,7 +55,7 @@ public class StudentAttendanceFormController {
 
     public void btnUpdateSA(ActionEvent actionEvent) {
         try {
-            studentAttendanceBO.update(new StudentAttendanceDTO(txtDate.getText(),
+            studentAttendanceBO.updateStudentAttendance(new StudentAttendanceDTO(txtDate.getText(),
                     txtTime.getText(),
                     (String) combStudentId.getValue()
             ));
@@ -69,7 +69,7 @@ public class StudentAttendanceFormController {
     public void btnDeleteSA(ActionEvent actionEvent) {
         Object value = combStudentId.getValue();
         try {
-            boolean delete = studentAttendanceBO.delete((String) value);
+            boolean delete = studentAttendanceBO.deleteStudentAttendance((String) value);
             if (delete) {
                 Alert alert=new Alert(Alert.AlertType.INFORMATION,"Delete is successful");
                 alert.show();
@@ -88,7 +88,7 @@ public class StudentAttendanceFormController {
     private void loadTableData() {
         ObservableList<StudentAttendanceDTO> studentAttendanceList = FXCollections.observableArrayList();
         try {
-            ArrayList<StudentAttendanceDTO> studentAttendanceData = studentAttendanceBO.getAll();
+            ArrayList<StudentAttendanceDTO> studentAttendanceData = studentAttendanceBO.getAllStudentAttendance();
             for (StudentAttendanceDTO studentAttendance : studentAttendanceData) {
                 studentAttendanceList.add(studentAttendance);
             }
