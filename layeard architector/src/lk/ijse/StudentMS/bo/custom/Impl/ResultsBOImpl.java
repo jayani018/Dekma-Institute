@@ -1,15 +1,16 @@
 package lk.ijse.StudentMS.bo.custom.Impl;
 
+import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.ResultsBO;
 import lk.ijse.StudentMS.dao.custom.ResultModelDAO;
-import lk.ijse.StudentMS.dao.custom.impl.ResultModelDAOImpl;
 import lk.ijse.StudentMS.model.ResultDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ResultsBOImpl implements ResultsBO {
-    ResultModelDAO resultModelDAO = new ResultModelDAOImpl();
+//    ResultModelDAO resultModelDAO = new ResultModelDAOImpl();
+ResultModelDAO resultModelDAO = (ResultModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.RESULT);
     @Override
     public ArrayList<ResultDTO> getAllResult() throws SQLException, ClassNotFoundException {
         return resultModelDAO.getAll();

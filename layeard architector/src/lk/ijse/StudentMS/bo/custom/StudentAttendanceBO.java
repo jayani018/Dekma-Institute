@@ -1,11 +1,12 @@
 package lk.ijse.StudentMS.bo.custom;
 
+import lk.ijse.StudentMS.bo.SuperBO;
 import lk.ijse.StudentMS.model.StudentAttendanceDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface StudentAttendanceBO {
+public interface StudentAttendanceBO extends SuperBO {
     public ArrayList<StudentAttendanceDTO> getAllStudentAttendance() throws SQLException, ClassNotFoundException ;
 
     public boolean addStudentAttendance(StudentAttendanceDTO dto) throws SQLException, ClassNotFoundException ;

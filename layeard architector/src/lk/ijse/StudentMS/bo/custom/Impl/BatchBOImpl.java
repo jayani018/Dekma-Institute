@@ -1,15 +1,18 @@
 package lk.ijse.StudentMS.bo.custom.Impl;
 
 import lk.ijse.StudentMS.bo.custom.BatchBO;
+import lk.ijse.StudentMS.dao.DAOFactory;
 import lk.ijse.StudentMS.dao.custom.BatchModelDAO;
-import lk.ijse.StudentMS.dao.custom.impl.BatchModelDAOImpl;
 import lk.ijse.StudentMS.model.BatchDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BatchBOImpl implements BatchBO {
-    BatchModelDAO batchModelDAO = new BatchModelDAOImpl();
+//    BatchModelDAO batchModelDAO = new BatchModelDAOImpl();
+//BatchModelDAO batchModelDAO = (BatchModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.BATCH);
+
+    BatchModelDAO batchModelDAO = (BatchModelDAO) DAOFactory.getDoFactory().getDAO(DAOFactory.DAOType.BATCH);
 
     public ArrayList<BatchDTO> getAllBatch() throws SQLException, ClassNotFoundException {
         return batchModelDAO.getAll();

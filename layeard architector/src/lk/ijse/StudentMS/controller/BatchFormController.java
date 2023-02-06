@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.Impl.BatchBOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.StudentModelDAOImpl;
 import lk.ijse.StudentMS.model.BatchDTO;
@@ -31,7 +32,9 @@ public class BatchFormController {
 
    //BatchModelDAO batchModelDAO = new BatchModelDAOImpl();
     StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
-    BatchBOImpl batchBO = new BatchBOImpl();
+//    BatchBOImpl batchBO = new BatchBOImpl();
+
+    BatchBOImpl batchBO = (BatchBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.BATCH);
 
     public void btnAddBatch(ActionEvent actionEvent) {
 
