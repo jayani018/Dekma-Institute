@@ -1,11 +1,12 @@
 package lk.ijse.StudentMS.bo.custom;
 
+import lk.ijse.StudentMS.bo.SuperBO;
 import lk.ijse.StudentMS.model.PaymentsDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface PaymentsBO {
+public interface PaymentsBO extends SuperBO {
     public ArrayList<PaymentsDTO> getAllPayments() throws SQLException, ClassNotFoundException ;
 
     public boolean addPayments(PaymentsDTO dto) throws SQLException, ClassNotFoundException;

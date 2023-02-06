@@ -16,7 +16,7 @@ public class PaymentsModelDAOImpl implements PaymentsModelDAO {
         ArrayList<PaymentsDTO> Payments = new ArrayList<>();
         ResultSet rst = SqlUtil.execute("SELECT * FROM Payments");
         while (rst.next()){
-            PaymentsDTO paymentsDTO = new PaymentsDTO(rst.getString("SID"), rst.getString("CarID"), rst.getString("amount"), rst.getString("payment_months"), rst.getString("time"),rst.getString("date"));
+            PaymentsDTO paymentsDTO = new PaymentsDTO(rst.getString(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5),rst.getString(6));
             Payments.add(paymentsDTO);
 
         }
@@ -26,12 +26,12 @@ public class PaymentsModelDAOImpl implements PaymentsModelDAO {
 
     @Override
     public boolean add(PaymentsDTO dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.execute("INSERT INTO Payments VALUES (?,?,?,?,?,?)",dto.getSID(),dto.getCarID(),dto.getAmount(),dto.getPayment_months(),dto.getTime(),dto.getDate() );
+        return SqlUtil.execute("INSERT INTO Payments VALUES (?,?,?,?,?,?)",dto.getCarID(),dto.getSID(),dto.getAmount(),dto.getDate(),dto.getPayment_months(),dto.getTime() );
     }
 
     @Override
     public boolean update(PaymentsDTO dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.execute("UPDATE Payments SET SID=?, amount=?, payment_months=?,time=?,date=? WHERE cardNo=? ",dto.getSID(),dto.getAmount(),dto.getPayment_months(),dto.getTime(),dto.getDate(),dto.getCarID());
+        return SqlUtil.execute("UPDATE Payments SET SID=?, amount=?,date=?, payment_months=?,time=? WHERE cardNo=? ",dto.getSID(),dto.getAmount(),dto.getDate(),dto.getPayment_months(),dto.getTime(),dto.getCarID());
 
     }
 
@@ -55,7 +55,7 @@ public class PaymentsModelDAOImpl implements PaymentsModelDAO {
         ResultSet rst = SqlUtil.execute("SELECT * FROM Payments WHERE CarID=?", id);
        PaymentsDTO paymentsDTO = null;
         if (rst.next()) {
-           paymentsDTO = new PaymentsDTO( rst.getString("SID"),id, rst.getString("amount"), rst.getString("payment_months"), rst.getString("time"),rst.getString("date"));
+           paymentsDTO = new PaymentsDTO( rst.getString("SID"),id, rst.getString("amount"),rst.getString("date"), rst.getString("payment_months"), rst.getString("time"));
         }
         return paymentsDTO;
     }

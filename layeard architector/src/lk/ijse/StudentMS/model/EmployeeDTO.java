@@ -8,20 +8,11 @@ public class EmployeeDTO {
     private String  contact;
     private String email;
     private Double salary;
-//    private String cashOrcard;
-//    private String role;
-
-//    public String getCashOrcard() {
-//        return cashOrcard;
-//    }
-//
-//    public void setCashOrcard(String cashOrcard) {
-//        this.cashOrcard = cashOrcard;
-//    }
 
 
 
-    public EmployeeDTO(String EID, String NIC, String name, String address, String contact, String email, String cashOrcard) {
+
+    public EmployeeDTO(String EID, String NIC, String name, String address, String contact, String email,Double salary) {
         this.EID = EID;
         this.NIC = NIC;
         this.name = name;
@@ -29,26 +20,9 @@ public class EmployeeDTO {
         this.contact = contact;
         this.email = email;
         this.salary = salary;
-//        this.cashOrcard = cashOrcard;
-//        this.role = role;
-    }
-
-    public EmployeeDTO(String id, String nic, String name, String address, String contact, String email, double salary, String cashOrcard) {
 
     }
 
-    public EmployeeDTO(String eid, String nic, String name, String address, String contact, String email, double salary) {
-
-    }
-
-
-//    public String getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(String role) {
-//        this.role = role;
-//    }
 
     public String getEID() {
         return EID;

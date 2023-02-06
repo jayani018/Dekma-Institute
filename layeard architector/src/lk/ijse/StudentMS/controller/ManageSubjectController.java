@@ -48,8 +48,9 @@ public class ManageSubjectController {
 
     public void btnUpdateSubject(ActionEvent actionEvent) {
         try {
-            boolean update = subjectBO.updateSubject(new SubjectDTO(txtName.getText(),
-                    txtSubId.getText()
+            boolean update = subjectBO.updateSubject(new SubjectDTO(
+                    txtSubId.getText(),
+                    txtName.getText()
             ));
             if (update) {
                 new Alert(Alert.AlertType.INFORMATION, "Update Suject").show();

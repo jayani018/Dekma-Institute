@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class EmployeeBOImpl implements EmployeeBO {
     EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
+
     @Override
     public ArrayList<EmployeeDTO> getAllEmployee() throws SQLException, ClassNotFoundException {
         return employeeModelDAO.getAll();

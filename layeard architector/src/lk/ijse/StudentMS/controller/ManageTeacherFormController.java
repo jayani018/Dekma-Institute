@@ -109,6 +109,7 @@ public class ManageTeacherFormController {
         }
 
     }
+
     //TeacherModelDAO teacherModelDAO = new TeacherModelDAOImpl();
     TeacherBOImpl teacherBO = new TeacherBOImpl();
 
@@ -134,7 +135,7 @@ public class ManageTeacherFormController {
             String[] Subject = new String[arrayList.size()];
 
 
-            ObservableList obList= FXCollections.observableArrayList();
+            ObservableList obList = FXCollections.observableArrayList();
             for (int i = 0; i < Subject.length; i++) {
                 obList.add(arrayList.get(i).getSUBID());
             }
@@ -149,13 +150,13 @@ public class ManageTeacherFormController {
 //        TeacherModelDAO teacherModelDAO = new TeacherModelDAOImpl();
         try {
             boolean add = teacherBO.addTeacher(new TeacherDTO(txtId.getText(),
-                    combSubId.getValue(),
+                    (String) combSubId.getValue(),
                     txtNIC.getText(),
                     txtName.getText(),
                     txtAddress.getText(),
                     txtContactNo.getText(),
                     txtEmail.getText(),
-                    txtSalary.getText()
+                    Double.parseDouble(txtSalary.getText())
             ));
             if (add) {
                 new Alert(Alert.AlertType.INFORMATION, "Add Teacher").show();
@@ -174,9 +175,9 @@ public class ManageTeacherFormController {
     public void btnSearch(ActionEvent actionEvent) {
         try {
             TeacherDTO search = teacherBO.searchTeacher(Search.getText());
-            if (search==null){
-                new Alert(Alert.AlertType.INFORMATION,"Not Teacher").show();
-            }else {
+            if (search == null) {
+                new Alert(Alert.AlertType.INFORMATION, "Not Teacher").show();
+            } else {
                 txtId.setText(search.getTID());
                 combSubId.setValue(search.getSUBID());
                 txtNIC.setText(search.getNIC());
@@ -197,17 +198,19 @@ public class ManageTeacherFormController {
 
     public void btnUpdate(ActionEvent actionEvent) {
         try {
-            boolean update = teacherBO.updateTeacher(new TeacherDTO((String) combSubId.getValue(),
+            boolean update = teacherBO.updateTeacher(new TeacherDTO(
+                    txtId.getText(),
+                    (String) combSubId.getValue(),
                     txtNIC.getText(),
                     txtName.getText(),
                     txtAddress.getText(),
                     txtContactNo.getText(),
                     txtEmail.getText(),
-                    txtSalary.getText(),
-                    txtId.getText()
+                    Double.parseDouble(txtSalary.getText())
             ));
             if (update) {
                 new Alert(Alert.AlertType.INFORMATION, "Update Employee").show();
+                loadTableData();
             }
             loadTableData();
             cmbLoadData();
@@ -222,10 +225,10 @@ public class ManageTeacherFormController {
         try {
             boolean delete = teacherBO.deleteTeacher(id);
             if (delete) {
-                Alert alert=new Alert(Alert.AlertType.INFORMATION,"Delete is successful");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Delete is successful");
                 alert.show();
-            }else {
-                Alert alert=new Alert(Alert.AlertType.ERROR,"Error");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error");
                 alert.show();
             }
             loadTableData();
@@ -234,7 +237,8 @@ public class ManageTeacherFormController {
             throwables.printStackTrace();
         }
     }
-          public void clear() {
+
+    public void clear() {
         txtId.clear();
         txtNIC.clear();
         txtSalary.clear();
@@ -246,7 +250,7 @@ public class ManageTeacherFormController {
     }
 
     public void TextOnKeyRelease(KeyEvent keyEvent) {
-        validate();
+        //validate();
 
         if (keyEvent.getCode() == KeyCode.ENTER) {
             Object responds = validate();

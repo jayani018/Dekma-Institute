@@ -9,9 +9,7 @@ public class TeacherDTO {
     private String Contact;
     private String email;
     private Double salary;
-
-    public TeacherDTO(String text, Object value, String txtNICText, String txtNameText, String txtAddressText, String txtContactNoText, String txtEmailText, String txtSalaryText) {
-    }
+    
 
     public TeacherDTO(String TID, String SUBID, String NIC, String name, String address, String contact, String email, Double salary) {
         this.TID = TID;

@@ -76,7 +76,7 @@ public class ManageStudentsFormController {
         Email.setCellValueFactory(new PropertyValueFactory<>("email"));
         CNumber.setCellValueFactory(new PropertyValueFactory<>("contact"));
         EY.setCellValueFactory(new PropertyValueFactory<>("exam_year"));
-        Subject.setCellValueFactory(new PropertyValueFactory<>("Subject"));
+        Subject.setCellValueFactory(new PropertyValueFactory<>("subject"));
 
         try {
             cmbLoadData();
@@ -111,13 +111,12 @@ public class ManageStudentsFormController {
 //        btnModifyBooking.setDisable(true);
     }
 
-
-   // StudentModelDAO studentModelDAO = new StudentModelDAOImpl();
-   EmployeeModelDAOImpl employeeModelDAO = new EmployeeModelDAOImpl();
-   StudentsBOImpl studentsBO = new StudentsBOImpl();
+   private final EmployeeModelDAOImpl employeeModelDAO = new EmployeeModelDAOImpl();
+   private final StudentsBOImpl studentsBO = new StudentsBOImpl();
 
 
     private void LoadTableData() {
+        Student.getItems().clear();
         ObservableList<StudentDTO> StudentList = FXCollections.observableArrayList();
         try {
             ArrayList<StudentDTO> studentData = studentsBO.getAllStudent();
@@ -128,30 +127,28 @@ public class ManageStudentsFormController {
             x.printStackTrace();
         }
         Student.setItems(StudentList);
-
-
     }
 
 
     public void btnUpdateStudent(ActionEvent actionEvent) {
         try {
-            boolean update = studentsBO.updateStudent
-                    (new StudentDTO(combEmployeeId.getValue(),
+            boolean update = studentsBO.updateStudent(
+                    new StudentDTO(
+                            txtID.getText(),
+                            combEmployeeId.getValue(),
                             txtNIC.getText(),
                             txtSubject.getText(),
                             txtEY.getText(),
                             txtName.getText(),
                             txtAdress.getText(),
                             txtCNo.getText(),
-                            txtEmail.getText(),
-                            txtID.getText()
+                            txtEmail.getText()
                     ));
             if (update) {
                 new Alert(Alert.AlertType.INFORMATION, "Update Employee").show();
             }
             LoadTableData();
             cmbLoadData();
-
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -223,7 +220,7 @@ public class ManageStudentsFormController {
         }
     }
 
-    public void btnSearch(ActionEvent actionEvent) {
+    public void btnSearch() {
         try {
             StudentDTO search =studentsBO.searchStudent(Search.getText());
             if (search == null) {
@@ -245,5 +242,6 @@ public class ManageStudentsFormController {
     }
 
     public void searchOnAction(ActionEvent actionEvent) {
+        btnSearch();
     }
 }

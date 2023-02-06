@@ -11,9 +11,6 @@ public class StudentDTO {
     private String contact;
     private String email;
 
-    public StudentDTO() {
-    }
-
 
     public StudentDTO( String SID,String EID, String NIC, String subject, String exam_year, String name, String address, String contact, String email) {
         this.SID = SID;

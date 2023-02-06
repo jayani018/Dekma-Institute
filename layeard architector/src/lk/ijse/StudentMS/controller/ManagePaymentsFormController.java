@@ -69,6 +69,7 @@ public class ManagePaymentsFormController {
                             txtTime.getText(),
                             txtCardNo.getText(),
                             txtDate.getText()
+
                     ));
             if (update) {
                 new Alert(Alert.AlertType.INFORMATION, "Update Payments").show();
@@ -102,11 +103,12 @@ public class ManagePaymentsFormController {
     }
 
     public void initialize() {
-        cardNo.setCellValueFactory(new PropertyValueFactory<>("CarNo"));
+        cardNo.setCellValueFactory(new PropertyValueFactory<>("carID"));
         Amount.setCellValueFactory(new PropertyValueFactory<>("Amount"));
+        Date.setCellValueFactory(new PropertyValueFactory<>("Date"));
         PaymentsM.setCellValueFactory(new PropertyValueFactory<>("payment_months"));
         Time.setCellValueFactory(new PropertyValueFactory<>("Time"));
-        Date.setCellValueFactory(new PropertyValueFactory<>("Date"));
+
         tableLoad();
         loadComboBox();
     }

@@ -62,7 +62,7 @@ public class ManageEmployeeFormController {
                             txtAddress.getText(),
                             txtContact.getText(),
                             txtEmail.getText(),
-                            txtSalary.getText()
+                            Double.parseDouble(txtSalary.getText())
 
                     ));
             if (add) {
@@ -80,13 +80,14 @@ public class ManageEmployeeFormController {
        // EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
         try {
             boolean update = employeeBO.updateEmployee(
-                    new EmployeeDTO(txtNIC.getText(),
+                    new EmployeeDTO(txtId.getText(),
+                            txtNIC.getText(),
                             txtName.getText(),
                             txtAddress.getText(),
                             txtContact.getText(),
                             txtEmail.getText(),
-                            txtSalary.getText(),
-                            txtId.getText()
+                            Double.parseDouble(txtSalary.getText())
+
                     ));
            // System.out.println(update);
             if (update) {
@@ -134,6 +135,14 @@ public class ManageEmployeeFormController {
     }
 
     public void initialize() {
+        EID.setCellValueFactory(new PropertyValueFactory<>("EID"));
+        NIC.setCellValueFactory(new PropertyValueFactory<>("NIC"));
+        Name.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        Address.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        CNumber.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        Email.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        Salary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        loadTableData();
 
 
     }
@@ -143,19 +152,19 @@ public class ManageEmployeeFormController {
 
 
     private void tableInit() {
-        EID.setCellValueFactory(new PropertyValueFactory<>("EID"));
-        NIC.setCellValueFactory(new PropertyValueFactory<>("NIC"));
-        Name.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        Address.setCellValueFactory(new PropertyValueFactory<>("Address"));
-        CNumber.setCellValueFactory(new PropertyValueFactory<>("Contact NO"));
-        Email.setCellValueFactory(new PropertyValueFactory<>("Email"));
-        Salary.setCellValueFactory(new PropertyValueFactory<>("Salary"));
-        loadTableData();
+//        EID.setCellValueFactory(new PropertyValueFactory<>("EID"));
+//        NIC.setCellValueFactory(new PropertyValueFactory<>("NIC"));
+//        Name.setCellValueFactory(new PropertyValueFactory<>("Name"));
+//        Address.setCellValueFactory(new PropertyValueFactory<>("Address"));
+//        CNumber.setCellValueFactory(new PropertyValueFactory<>("Contact NO"));
+//        Email.setCellValueFactory(new PropertyValueFactory<>("Email"));
+//        Salary.setCellValueFactory(new PropertyValueFactory<>("Salary"));
+//        loadTableData();
     }
 
-    public void initial() {
-        tableInit();
-    }
+//    public void initial() {
+//        tableInit();
+//    }
 
     public void searchOnActions(ActionEvent actionEvent) {
 

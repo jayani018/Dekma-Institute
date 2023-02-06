@@ -29,12 +29,12 @@
                   <Font name="System Bold" size="37.0" />
                </font>
             </Text>
-            <JFXComboBox layoutX="108.0" layoutY="190.0" prefHeight="25.0" prefWidth="148.0" promptText="Student ID" />
-            <JFXComboBox layoutX="375.0" layoutY="190.0" prefHeight="25.0" prefWidth="164.0" promptText="Subject ID" />
+            <JFXComboBox fx:id="combStudentId" layoutX="108.0" layoutY="190.0" prefHeight="25.0" prefWidth="148.0" promptText="Student ID" />
+            <JFXComboBox fx:id="combSubId" layoutX="375.0" layoutY="190.0" prefHeight="25.0" prefWidth="164.0" promptText="Subject ID" />
             <Text layoutX="108.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result:" />
-            <JFXTextField layoutX="158.0" layoutY="266.0" prefHeight="25.0" prefWidth="100.0" promptText="Result" />
+            <JFXTextField fx:id="txtResult" layoutX="158.0" layoutY="266.0" prefHeight="25.0" prefWidth="100.0" promptText="Result" />
             <Text layoutX="378.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pass/Fail:" />
-            <JFXTextField layoutX="434.0" layoutY="271.0" prefHeight="25.0" prefWidth="107.0" promptText="Pass/Fail" />
+            <JFXTextField fx:id="txtRID" layoutX="434.0" layoutY="271.0" prefHeight="25.0" prefWidth="107.0" promptText="Pass/Fail" />
             <JFXButton layoutX="147.0" layoutY="387.0" onAction="#btnAddResult" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #2196F3; -fx-background-radius: 30;" text="Add " />
             <JFXButton layoutX="256.0" layoutY="387.0" onAction="#btnUpdateResult" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #43A047; -fx-background-radius: 30;" text="Update " />
             <JFXButton layoutX="365.0" layoutY="387.0" onAction="#btnDeleteResult" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #F44336; -fx-background-radius: 30;" text="Delete" />

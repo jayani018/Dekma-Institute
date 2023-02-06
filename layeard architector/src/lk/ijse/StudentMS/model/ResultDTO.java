@@ -6,7 +6,7 @@ public class ResultDTO {
     private String SUBID;
     private String result;
 
-    public ResultDTO() {
+    public ResultDTO(String text, Object value, Object combSubIdValue, String txtResultText) {
     }
 
     public ResultDTO(String TID ,String SID, String SUBID, String result) {
