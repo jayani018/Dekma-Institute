@@ -1,7 +1,7 @@
 package lk.ijse.StudentMS.bo.custom.Impl;
 
-import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.EmployeeBO;
+import lk.ijse.StudentMS.dao.DAOFactory;
 import lk.ijse.StudentMS.dao.custom.EmployeeModelDAO;
 import lk.ijse.StudentMS.model.EmployeeDTO;
 
@@ -10,7 +10,8 @@ import java.util.ArrayList;
 
 public class EmployeeBOImpl implements EmployeeBO {
 //    EmployeeModelDAO employeeModelDAO = new EmployeeModelDAOImpl();
-EmployeeModelDAO employeeModelDAO = (EmployeeModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.EMPLOYEE);
+//EmployeeModelDAO employeeModelDAO = (EmployeeModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.EMPLOYEE);
+    EmployeeModelDAO employeeModelDAO = (EmployeeModelDAO) DAOFactory.getDoFactory().getDAO(DAOFactory.DAOType.EMPLOYEE);
 
     @Override
     public ArrayList<EmployeeDTO> getAllEmployee() throws SQLException, ClassNotFoundException {
