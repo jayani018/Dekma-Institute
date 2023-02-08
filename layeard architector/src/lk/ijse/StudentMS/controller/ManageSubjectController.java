@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.Impl.SubjectBOImpl;
 import lk.ijse.StudentMS.model.SubjectDTO;
 
@@ -27,7 +28,8 @@ public class ManageSubjectController {
     public TableColumn Name1;
 
    // SubjectModelDAO subjectModelDAO = new SubjectModelDAOImpl();
-    SubjectBOImpl subjectBO = new SubjectBOImpl();
+    //SubjectBOImpl subjectBO = new SubjectBOImpl();
+    SubjectBOImpl subjectBO = (SubjectBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.SUBJECT);
 
     public void btnAddSubject(ActionEvent actionEvent) throws IOException {
 //        SubjectModelDAO subjectModelDAO = new SubjectModelDAOImpl();

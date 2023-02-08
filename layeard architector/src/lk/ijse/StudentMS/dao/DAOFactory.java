@@ -33,7 +33,7 @@ public class DAOFactory {
             case STUDENT:
                 return new StudentModelDAOImpl();
             case SUBJECT:
-                return null;
+                return new SubjectModelDAOImpl();
             case TEACHER:
                 return null;
             default:

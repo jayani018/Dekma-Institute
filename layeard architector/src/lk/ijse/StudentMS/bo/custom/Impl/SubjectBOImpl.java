@@ -1,7 +1,7 @@
 package lk.ijse.StudentMS.bo.custom.Impl;
 
-import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.SubjectBO;
+import lk.ijse.StudentMS.dao.DAOFactory;
 import lk.ijse.StudentMS.dao.custom.SubjectModelDAO;
 import lk.ijse.StudentMS.model.SubjectDTO;
 
@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class SubjectBOImpl implements SubjectBO {
 
 //    SubjectModelDAO subjectModelDAO = new SubjectModelDAOImpl();
-SubjectModelDAO subjectModelDAO = (SubjectModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.SUBJECT);
+//SubjectModelDAO subjectModelDAO = (SubjectModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.SUBJECT);
+SubjectModelDAO subjectModelDAO = (SubjectModelDAO) DAOFactory.getDoFactory().getDAO(DAOFactory.DAOType.SUBJECT);
     @Override
     public ArrayList<SubjectDTO> getAllSubject() throws SQLException, ClassNotFoundException {
         return subjectModelDAO.getAll();
