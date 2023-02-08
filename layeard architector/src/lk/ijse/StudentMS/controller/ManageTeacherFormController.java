@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.Impl.TeacherBOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.SubjectModelDAOImpl;
 import lk.ijse.StudentMS.model.SubjectDTO;
@@ -111,7 +112,8 @@ public class ManageTeacherFormController {
     }
 
     //TeacherModelDAO teacherModelDAO = new TeacherModelDAOImpl();
-    TeacherBOImpl teacherBO = new TeacherBOImpl();
+    //TeacherBOImpl teacherBO = new TeacherBOImpl();
+    TeacherBOImpl teacherBO = (TeacherBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.TEACHER);
 
     private void loadTableData() {
         ObservableList<TeacherDTO> TeacherList = FXCollections.observableArrayList();
