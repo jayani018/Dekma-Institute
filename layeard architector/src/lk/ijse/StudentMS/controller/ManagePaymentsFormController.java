@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.Impl.PaymentsBOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.StudentModelDAOImpl;
 import lk.ijse.StudentMS.model.PaymentsDTO;
@@ -36,7 +37,8 @@ public class ManagePaymentsFormController {
 
    // PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
     StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
-    PaymentsBOImpl paymentsBO = new PaymentsBOImpl();
+  //  PaymentsBOImpl paymentsBO = new PaymentsBOImpl();
+    PaymentsBOImpl paymentsBO = (PaymentsBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.PAYMENTS);
 
     public void btnAddPayments(ActionEvent actionEvent) throws IOException {
 //        PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();

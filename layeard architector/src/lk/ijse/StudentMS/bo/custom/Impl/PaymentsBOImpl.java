@@ -1,7 +1,7 @@
 package lk.ijse.StudentMS.bo.custom.Impl;
 
-import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.PaymentsBO;
+import lk.ijse.StudentMS.dao.DAOFactory;
 import lk.ijse.StudentMS.dao.custom.PaymentsModelDAO;
 import lk.ijse.StudentMS.model.PaymentsDTO;
 
@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class PaymentsBOImpl implements PaymentsBO {
 
 //    PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
-PaymentsModelDAO paymentsModelDAO = (PaymentsModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.PAYMENTS);
+//PaymentsModelDAO paymentsModelDAO = (PaymentsModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.PAYMENTS);
+PaymentsModelDAO paymentsModelDAO = (PaymentsModelDAO) DAOFactory.getDoFactory().getDAO(DAOFactory.DAOType.PAYMENTS);
     @Override
     public ArrayList<PaymentsDTO> getAllPayments() throws SQLException, ClassNotFoundException {
         return paymentsModelDAO.getAll();
