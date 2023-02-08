@@ -22,6 +22,7 @@ public class TimeSheduleFormController {
     public JFXComboBox combTeacher;
 
     TimeSheduleBOImpl timeSheduleBO = new TimeSheduleBOImpl();
+    //TimeSheduleBOImpl timeSheduleBO = BOFactory.getBoFactory().getBO(BOF);
 
     public void btnAddTSM(ActionEvent actionEvent) {
 //        TimeSheduleBOImpl timeSheduleBO = new TimeSheduleBOImpl();
