@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.Impl.ResultsBOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.StudentModelDAOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.SubjectModelDAOImpl;
@@ -35,7 +36,9 @@ public class ManageResultsController {
     public JFXTextField txtRID;
 
 
-    ResultsBOImpl resultsBO = new ResultsBOImpl();
+   // ResultsBOImpl resultsBO = new ResultsBOImpl();
+    ResultsBOImpl resultsBO = (ResultsBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.RESULT);
+
    public void btnAddResult(ActionEvent actionEvent) throws IOException {
         //PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
        try {
