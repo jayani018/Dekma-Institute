@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.Impl.StudentAttendanceBOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.StudentModelDAOImpl;
 import lk.ijse.StudentMS.model.StudentAttendanceDTO;
@@ -31,7 +32,8 @@ public class StudentAttendanceFormController {
     public JFXDatePicker txtdate;
 
    // StudentAttendanceModelDAO studentAttendanceModelDAO = new StudentAttendanceModelDAOImpl();
-    StudentAttendanceBOImpl studentAttendanceBO = new StudentAttendanceBOImpl();
+   // StudentAttendanceBOImpl studentAttendanceBO = new StudentAttendanceBOImpl();
+    StudentAttendanceBOImpl studentAttendanceBO = (StudentAttendanceBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.STUDENT_ATTENDANCE);
 
     public void btnAddSA(ActionEvent actionEvent) {
 //        StudentAttendanceBOImpl studentAttendanceBO = new StudentAttendanceBOImpl();

@@ -3,6 +3,7 @@ package lk.ijse.StudentMS.dao;
 import lk.ijse.StudentMS.dao.custom.impl.BatchModelDAOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.EmployeeModelDAOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.PaymentsModelDAOImpl;
+import lk.ijse.StudentMS.dao.custom.impl.StudentAttendanceModelDAOImpl;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -31,7 +32,7 @@ public class DAOFactory {
             case RESULT:
                 return null;
             case STUDENT_ATTENDANCE:
-                return null;
+                return new StudentAttendanceModelDAOImpl();
             case STUDENT:
                 return null;
             case SUBJECT:
