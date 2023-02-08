@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.Impl.StudentsBOImpl;
 import lk.ijse.StudentMS.dao.custom.impl.EmployeeModelDAOImpl;
 import lk.ijse.StudentMS.model.EmployeeDTO;
@@ -112,7 +113,8 @@ public class ManageStudentsFormController {
     }
 
    private final EmployeeModelDAOImpl employeeModelDAO = new EmployeeModelDAOImpl();
-   private final StudentsBOImpl studentsBO = new StudentsBOImpl();
+  // private final StudentsBOImpl studentsBO = new StudentsBOImpl();
+    StudentsBOImpl studentsBO = (StudentsBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.STUDENT);
 
 
     private void LoadTableData() {

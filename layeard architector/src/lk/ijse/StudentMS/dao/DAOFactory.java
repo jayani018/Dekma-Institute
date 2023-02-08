@@ -31,7 +31,7 @@ public class DAOFactory {
             case STUDENT_ATTENDANCE:
                 return new StudentAttendanceModelDAOImpl();
             case STUDENT:
-                return null;
+                return new StudentModelDAOImpl();
             case SUBJECT:
                 return null;
             case TEACHER:

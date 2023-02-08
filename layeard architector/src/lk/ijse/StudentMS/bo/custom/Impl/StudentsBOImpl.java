@@ -1,7 +1,7 @@
 package lk.ijse.StudentMS.bo.custom.Impl;
 
-import lk.ijse.StudentMS.bo.BOFactory;
 import lk.ijse.StudentMS.bo.custom.StudentsBO;
+import lk.ijse.StudentMS.dao.DAOFactory;
 import lk.ijse.StudentMS.dao.custom.StudentModelDAO;
 import lk.ijse.StudentMS.model.StudentDTO;
 
@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class StudentsBOImpl implements StudentsBO {
 
 //   StudentModelDAO studentModelDAO = new StudentModelDAOImpl();
-StudentModelDAO studentModelDAO = (StudentModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.STUDENT);
+//StudentModelDAO studentModelDAO = (StudentModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.STUDENT);
+StudentModelDAO studentModelDAO = (StudentModelDAO) DAOFactory.getDoFactory().getDAO(DAOFactory.DAOType.STUDENT);
 
     public ArrayList<StudentDTO> getAllStudent() throws SQLException, ClassNotFoundException {
         return studentModelDAO.getAll();
