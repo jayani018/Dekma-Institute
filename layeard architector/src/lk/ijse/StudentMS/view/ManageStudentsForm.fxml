@@ -32,7 +32,7 @@
                </font>
             </Text>
             <Text layoutX="92.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :" />
-            <JFXTextField fx:id="txtID" layoutX="172.0" layoutY="226.0" onKeyReleased="#stuOnKeyReleased" prefHeight="25.0" prefWidth="128.0" promptText="Student ID" />
+            <JFXTextField fx:id="txtID" layoutX="172.0" layoutY="226.0" onKeyReleased="#stuOnKeyReleased" prefHeight="25.0" prefWidth="128.0" promptText="Student ID"></JFXTextField>
             <Text layoutX="92.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
             <JFXTextField fx:id="txtName" layoutX="137.0" layoutY="264.0" onKeyReleased="#stuOnKeyReleased" prefHeight="25.0" prefWidth="164.0" promptText="Name" />
             <Text layoutX="91.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />

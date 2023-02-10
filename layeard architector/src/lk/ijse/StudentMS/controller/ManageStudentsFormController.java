@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.StudentMS.bo.BOFactory;
@@ -61,6 +62,7 @@ public class ManageStudentsFormController {
         Pattern patternNic = Pattern.compile("^[0-9]{9}[v]$");
         Pattern patternSubject = Pattern.compile("^[A-z0-9]{3,}$");
         Pattern patternEmail = Pattern.compile("^[A-z0-9 ,/]{3,}(@gmail.com)$");
+        Pattern patternEY = Pattern.compile("^[0-9]{4,}$");
 
         map.put(txtID, patternId);
         map.put(txtNIC, patternNic);
@@ -69,6 +71,7 @@ public class ManageStudentsFormController {
         map.put(txtEmail, patternEmail);
         map.put(txtCNo, patternContact);
         map.put(txtSubject, patternSubject);
+        map.put(txtEY, patternEY);
 
 
         StudentId.setCellValueFactory(new PropertyValueFactory<>("SID"));
@@ -179,6 +182,18 @@ public class ManageStudentsFormController {
         }
 
     public void stuOnKeyReleased(KeyEvent keyEvent) {
+        validate();
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            Object responds = validate();
+
+            if (responds instanceof TextField) {
+                TextField textField = (TextField) responds;
+                textField.requestFocus();
+            } else {
+              //  btnAddStudent();
+            }
+        }
     }
 
     public void btnAddStudent(ActionEvent actionEvent) {
