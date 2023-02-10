@@ -18,7 +18,7 @@
             <JFXButton layoutX="27.0" layoutY="289.0" onAction="#btnMPayments" prefHeight="35.0" prefWidth="195.0" style="-fx-background-color: #1A237F;" text="Manage Payments" textFill="#f8f6f6" />
             <JFXButton layoutX="27.0" layoutY="234.0" onAction="#btnMSubject" prefHeight="35.0" prefWidth="195.0" style="-fx-background-color: #1A237F;" text="Manage Subjects" textFill="#fffefe" />
             <JFXButton layoutX="27.0" layoutY="177.0" onAction="#btnMTeacher" prefHeight="35.0" prefWidth="195.0" style="-fx-background-color: #1A237F;" text="Manage Teachers" textFill="#fcf9f9" />
-            <JFXButton layoutX="27.0" layoutY="123.0" onAction="#btnMStudent" prefHeight="35.0" prefWidth="195.0" style="-fx-background-color: #42A5F5;" text="Manage Students" textFill="#f5f3f3" />
+            <JFXButton layoutX="27.0" layoutY="123.0" onAction="#btnMStudent" prefHeight="35.0" prefWidth="195.0" style="-fx-background-color: #1A237F;" text="Manage Students" textFill="#f5f3f3" />
             <Text fill="#1b1a1a" layoutX="59.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manager">
                <font>
                   <Font name="System Bold" size="32.0" />

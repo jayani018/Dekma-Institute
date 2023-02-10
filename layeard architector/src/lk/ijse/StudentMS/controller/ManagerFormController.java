@@ -3,7 +3,9 @@ package lk.ijse.StudentMS.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -18,9 +20,13 @@ public class ManagerFormController {
 
     @FXML
     void btnLogout(ActionEvent event) throws IOException {
-        Parent parent = load(getClass().getResource("/lk/ijse/StudentMS/view/LoginForm.fxml"));
-        pane.getChildren().clear();
-        pane.getChildren().add(parent);
+//        Parent parent = load(getClass().getResource("/lk/ijse/StudentMS/view/LoginForm.fxml"));
+//        pane.getChildren().clear();
+//        pane.getChildren().add(parent);
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(load(getClass().getResource("/lk/ijse/StudentMS/view/LoginForm.fxml"))));
+        stage.show();
+
     }
 
     @FXML

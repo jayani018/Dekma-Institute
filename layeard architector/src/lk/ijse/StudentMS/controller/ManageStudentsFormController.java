@@ -50,6 +50,7 @@ public class ManageStudentsFormController {
     public JFXTextField txtSubject;
     public TableColumn Subject;
     LinkedHashMap<TextField, Pattern> map = new LinkedHashMap<>();
+    StudentsBOImpl studentsBO = (StudentsBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.STUDENT);
 
     public void initialize() {
 
@@ -114,7 +115,7 @@ public class ManageStudentsFormController {
 
    private final EmployeeModelDAOImpl employeeModelDAO = new EmployeeModelDAOImpl();
   // private final StudentsBOImpl studentsBO = new StudentsBOImpl();
-    StudentsBOImpl studentsBO = (StudentsBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.STUDENT);
+//    StudentsBOImpl studentsBO = (StudentsBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.STUDENT);
 
 
     private void LoadTableData() {

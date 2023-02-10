@@ -48,6 +48,7 @@ public class ManageTeacherFormController {
     public JFXButton btnDelete;
     public JFXButton btnSearch;
     LinkedHashMap<TextField, Pattern> map = new LinkedHashMap<>();
+    TeacherBOImpl teacherBO = (TeacherBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.TEACHER);
 
 
     public void initialize() {
@@ -113,7 +114,7 @@ public class ManageTeacherFormController {
 
     //TeacherModelDAO teacherModelDAO = new TeacherModelDAOImpl();
     //TeacherBOImpl teacherBO = new TeacherBOImpl();
-    TeacherBOImpl teacherBO = (TeacherBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.TEACHER);
+
 
     private void loadTableData() {
         ObservableList<TeacherDTO> TeacherList = FXCollections.observableArrayList();

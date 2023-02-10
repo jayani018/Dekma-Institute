@@ -36,7 +36,7 @@ public class ManagePaymentsFormController {
     public TableColumn Date;
 
    // PaymentsModelDAO paymentsModelDAO = new PaymentsModelDAOImpl();
-    StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
+//    StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
   //  PaymentsBOImpl paymentsBO = new PaymentsBOImpl();
     PaymentsBOImpl paymentsBO = (PaymentsBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.PAYMENTS);
 
@@ -117,7 +117,7 @@ public class ManagePaymentsFormController {
 
     private void loadComboBox() {
         try {
-            // StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
+             StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
             ArrayList<StudentDTO> arrayList = studentModelDAO.getAll();
 
             String[] Student = new String[arrayList.size()];

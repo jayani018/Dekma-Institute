@@ -31,7 +31,7 @@ public class BatchFormController {
     public JFXTextField txtYear;
 
    //BatchModelDAO batchModelDAO = new BatchModelDAOImpl();
-    StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
+//    StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
 //    BatchBOImpl batchBO = new BatchBOImpl();
 
     BatchBOImpl batchBO = (BatchBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOType.BATCH);
@@ -138,7 +138,7 @@ public class BatchFormController {
 
     private void loadComboBox() {
         try {
-           // StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
+            StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
             ArrayList<StudentDTO> arrayList = studentModelDAO.getAll();
 
             String[] Student = new String[arrayList.size()];

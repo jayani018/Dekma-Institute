@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BatchBOImpl implements BatchBO {
+//    StudentModelDAOImpl studentModelDAO = new StudentModelDAOImpl();
 //    BatchModelDAO batchModelDAO = new BatchModelDAOImpl();
 //BatchModelDAO batchModelDAO = (BatchModelDAO) BOFactory.getBoFactory().getBO(BOFactory.BOType.BATCH);
 
